@@ -335,6 +335,23 @@
         <div class="card"><h3 data-lang="en">Per-item caps hurt substitutions</h3><h3 data-lang="uk">Per-item caps погіршують заміни</h3><ul data-lang="en"><li>Pricier but suitable alternatives are rejected.</li><li>Basket-level flexibility cannot offset removed items.</li><li>More removals, complaints and cancellation risk.</li><li>Bolt pays the difference when the partner allows +5–10%.</li></ul><ul data-lang="uk"><li>Дорожчі, але релевантні альтернативи відхиляються.</li><li>Basket-level flexibility не компенсує видалені товари.</li><li>Більше removals, complaints і cancellation risk.</li><li>Bolt платить різницю, коли партнер дозволяє +5–10%.</li></ul></div>
         <div class="card"><h3 data-lang="en">More overbooking can hurt conversion</h3><h3 data-lang="uk">Більший overbooking може погіршити conversion</h3><ul data-lang="en"><li>The eater sees or funds a higher authorization.</li><li>The hold is not the expected final basket.</li><li>Romania feedback in the source document is directionally negative on 10% overbooking.</li><li>It still cannot guarantee full cost coverage.</li></ul><ul data-lang="uk"><li>Eater бачить або фінансує вищу authorization.</li><li>Hold не дорівнює очікуваному фінальному кошику.</li><li>Romania feedback у джерелі directionally negative щодо 10% overbooking.</li><li>Навіть це не гарантує повного покриття витрат.</li></ul></div>
       </div>
+      <div class="decision warn" style="margin-top:14px">
+        <strong data-lang="en">Tomasz (Product/tech) · from Replacements thread</strong><strong data-lang="uk">Томаш (Product/tech) · з треду Replacements</strong>
+        <ul data-lang="en" style="margin-top:6px">
+          <li>Default: replacement must be same price or cheaper; anything above is on Partner unless overbooking is configured.</li>
+          <li>Overbooking works <strong>per item</strong> only — you cannot pool 90% + 120% and assume the basket totals align.</li>
+          <li>Basket-level / total-order pricing exists, but is <strong>bad UX</strong> (eater loses item-level visibility) and is a path Product is trying to eliminate.</li>
+          <li>Available config lever today ≈ raise overbooking (e.g. +10% per item) — but Romania (Carrefour) showed higher overbooking can hurt sales; cutting 10%→5% coincided with ~9% sales uplift.</li>
+          <li><strong>Second payment / UA market standard is not a config fix</strong> — Product must decide whether to invest; current tooling cannot deliver hold → release → final charge out of the box.</li>
+        </ul>
+        <ul data-lang="uk" style="margin-top:6px">
+          <li>За замовчуванням: заміна має бути такою ж або дешевшою; усе вище — на Partner, якщо немає overbooking.</li>
+          <li>Overbooking працює <strong>лише per item</strong> — не можна “злити” 90% + 120% і вважати, що кошик зійшовся.</li>
+          <li>Basket-level / total-order pricing технічно є, але це <strong>поганий UX</strong> (eater втрачає item-level visibility) і шлях, який Product хоче прибрати.</li>
+          <li>Доступний важіль зараз ≈ підняти overbooking (напр. +10% per item) — але Romania (Carrefour) показала, що вищий overbooking б’є по sales; зниження 10%→5% збіглося з ~9% ростом продажів.</li>
+          <li><strong>Друга транзакція / UA market standard — не config-фікс</strong>: Product має вирішити, чи інвестувати; поточний tooling не дає hold → release → final charge “з коробки”.</li>
+        </ul>
+      </div>
     </section>
 
     <section class="section">
