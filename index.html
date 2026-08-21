@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Yuliia Nikolaieva">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Ukraine Stores · Second Payment Business Case</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg:#f4f7f5; --surface:#fff; --ink:#14201b; --muted:#637169; --line:#dce5df;
+      --green:#2f7d5b; --green-soft:#e8f3ed; --red:#b44747; --red-soft:#f8eaea;
+      --amber:#94651a; --amber-soft:#f8f0de; --blue:#426ba6; --navy:#18362a;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+    .shell{max-width:1200px;margin:0 auto;padding:28px 28px 64px}
+    header{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:18px}
+    .eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:850;color:var(--green)}
+    h1{font-size:clamp(30px,4.5vw,48px);line-height:1.02;letter-spacing:-.045em;margin:7px 0 10px;max-width:780px}
+    h2{font-size:22px;letter-spacing:-.025em;margin:0 0 7px}
+    h3{font-size:15px;margin:0 0 10px}
+    p{margin:0;color:var(--muted);line-height:1.6}
+    a{color:var(--blue)}
+    .lang{display:flex;gap:6px;position:sticky;top:14px;z-index:5}
+    .lang button{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 11px;border-radius:8px;font-weight:800;cursor:pointer}
+    .lang button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .hero{background:var(--navy);color:#fff;border-radius:16px;padding:22px;margin:20px 0}
+    .hero p{color:#d6e4dc}
+    .grid{display:grid;gap:16px}
+    .kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:18px}
+    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .kpi{border-left:1px solid #49675a;padding-left:16px}
+    .kpi:first-child{border-left:0;padding-left:0}
+    .k-label{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:#b9cec2;font-weight:800}
+    .k-value{font-size:28px;font-weight:850;line-height:1.1;margin:8px 0 5px}
+    .k-note{font-size:11px;color:#c9dad1}
+    .section{margin-top:30px}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin-bottom:13px}
+    .section-head p{font-size:12px;max-width:700px}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+    .chart{height:280px;position:relative}
+    .chart.short{height:235px}
+    .caption{font-size:10.5px;color:var(--muted);margin-top:9px;line-height:1.45}
+    .decision{border-left:4px solid var(--green);background:var(--green-soft);border-radius:10px;padding:15px 17px;margin-top:18px}
+    .decision strong{display:block;color:#214d38;margin-bottom:5px}
+    .risk{border-left-color:var(--red);background:var(--red-soft)}
+    .risk strong{color:#7d3030}
+    .warn{border-left-color:var(--amber);background:var(--amber-soft)}
+    .warn strong{color:#654710}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:11px;background:var(--surface)}
+    table{border-collapse:collapse;width:100%;font-size:12px}
+    th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+    th{background:#edf2ef;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.045em;position:sticky;top:0}
+    th:first-child,td:first-child{text-align:left}
+    tr:last-child td{border-bottom:0}
+    .bad{color:var(--red);font-weight:800}
+    .good{color:var(--green);font-weight:800}
+    .tag{display:inline-block;border-radius:999px;padding:3px 8px;font-size:10px;font-weight:800;background:var(--amber-soft);color:#654710}
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:13px}
+    .step{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px;min-height:112px}
+    .step-no{color:var(--green);font-weight:900;font-size:11px}
+    .step b{display:block;font-size:12px;margin:7px 0 4px}
+    .step p{font-size:11px;line-height:1.4}
+    ul{margin:7px 0 0;padding-left:18px;color:var(--muted);font-size:12.5px;line-height:1.6}
+    .ask{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+    .ask h2{font-size:26px}
+    .ask-side{border-left:1px solid var(--line);padding-left:18px}
+    .source{font-size:11px;color:var(--muted);line-height:1.55}
+    footer{margin-top:36px;border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;gap:20px}
+    [data-lang]{display:none}
+    body.lang-en [data-lang="en"],body.lang-uk [data-lang="uk"]{display:revert}
+    @media(max-width:900px){.kpis,.three{grid-template-columns:1fr 1fr}.two,.ask{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.ask-side{border-left:0;border-top:1px solid var(--line);padding:14px 0 0}}
+    @media(max-width:560px){.shell{padding:20px 15px 45px}header{display:block}.lang{margin-top:14px;position:static}.kpis,.three,.flow{grid-template-columns:1fr}.kpi{border-left:0;border-top:1px solid #49675a;padding:12px 0 0}.kpi:first-child{border-top:0}.section-head{display:block}.chart{height:240px}}
+    @media print{body{background:#fff}.shell{max-width:none;padding:12mm}.lang{display:none}.card,.ask,.hero,.table-wrap{break-inside:avoid}.section{break-inside:avoid;margin-top:20px}}
+  </style>
+</head>
+<body class="lang-en">
+  <main class="shell">
+    <header>
+      <div>
+        <div class="eyebrow">Bolt Food · Ukraine Stores · Product business case</div>
+        <h1 data-lang="en">Charge the final basket after picking</h1>
+        <h1 data-lang="uk">Списувати фінальну суму після збірки</h1>
+        <p data-lang="en">Why Ukraine needs a second payment transaction for substitutions, weighted goods and packaging</p>
+        <p data-lang="uk">Чому Україні потрібна друга платіжна транзакція для замін, вагових товарів і пакування</p>
+      </div>
+      <div class="lang" aria-label="Language selector">
+        <button id="enBtn" class="active" onclick="setLanguage('en')">EN</button>
+        <button id="ukBtn" onclick="setLanguage('uk')">UA</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div data-lang="en">
+        <div class="eyebrow" style="color:#8fd0ae">Executive answer</div>
+        <h2>Overbooking is a partial workaround. Final-amount charging is the scalable solution.</h2>
+        <p>The current flow fixes the eater charge before picking. Every uncovered increase in basket value is paid by Bolt, while strict price caps remove valid substitutions and damage UX. The optimistic Stores plan scales this structural leakage to an estimated <strong>€185.8k / ₴9.45m in six months</strong>.</p>
+      </div>
+      <div data-lang="uk">
+        <div class="eyebrow" style="color:#8fd0ae">Короткий висновок</div>
+        <h2>Overbooking — частковий workaround. Списання фінальної суми — масштабоване рішення.</h2>
+        <p>Поточний flow фіксує списання до збірки. Усе непокрите збільшення кошика сплачує Bolt, а жорсткі price caps прибирають нормальні заміни й погіршують UX. За оптимістичним планом Stores ця системна втрата зростає до орієнтовних <strong>€185.8k / ₴9.45m за шість місяців</strong>.</p>
+      </div>
+      <div class="grid kpis">
+        <div class="kpi"><div class="k-label" data-lang="en">Observed gross payout</div><div class="k-label" data-lang="uk">Фактичні валові виплати</div><div class="k-value">₴987k</div><div class="k-note">Jan–Jun 2026</div></div>
+        <div class="kpi"><div class="k-label" data-lang="en">Forecast payout</div><div class="k-label" data-lang="uk">Прогноз виплат</div><div class="k-value">€185.8k</div><div class="k-note">Oct 2026–Mar 2027</div></div>
+        <div class="kpi"><div class="k-label" data-lang="en">Commission consumed</div><div class="k-label" data-lang="uk">Комісії з’їдається</div><div class="k-value">24.2%</div><div class="k-note" data-lang="en">before all other costs</div><div class="k-note" data-lang="uk">до всіх інших витрат</div></div>
+        <div class="kpi"><div class="k-label" data-lang="en">Peak monthly payout</div><div class="k-label" data-lang="uk">Пікова місячна виплата</div><div class="k-value">€41.2k</div><div class="k-note">Mar 2027</div></div>
+      </div>
+    </section>
+
+    <section class="ask">
+      <div>
+        <div class="eyebrow" data-lang="en">Product ask</div><div class="eyebrow" data-lang="uk">Запит до Product</div>
+        <h2 data-lang="en">Prioritize a Ukraine MVP for hold → release → final charge</h2>
+        <h2 data-lang="uk">Пріоритезувати MVP для України: hold → release → final charge</h2>
+        <p data-lang="en">Authorize an estimated amount at checkout, receive the final basket after picking, release the original hold and charge the actual total with clear eater consent and item-level visibility.</p>
+        <p data-lang="uk">Авторизувати орієнтовну суму під час checkout, отримати фінальний кошик після picking, зняти початковий hold і списати фактичну суму зі зрозумілою згодою eater та item-level visibility.</p>
+      </div>
+      <div class="ask-side">
+        <span class="tag">LSS-64024</span>
+        <ul data-lang="en">
+          <li>Start with VARUS / region 84637.</li>
+          <li>Support substitutions, weight changes and packaging.</li>
+          <li>Measure authorization, charge success, conversion and complaints.</li>
+        </ul>
+        <ul data-lang="uk">
+          <li>Почати з VARUS / region 84637.</li>
+          <li>Підтримати заміни, зміну ваги та пакування.</li>
+          <li>Вимірювати authorization, charge success, conversion і complaints.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">01 · Evidence</div><h2 data-lang="en">The cash-out is already material</h2><h2 data-lang="uk">Cash-out уже матеріальний</h2></div>
+        <p data-lang="en">Gross payout means positive partner-vs-Bolt differences only. Negative LOKO adjustments do not offset cash actually paid to other partners.</p>
+        <p data-lang="uk">Валова виплата — лише позитивна різниця partner-vs-Bolt. Негативні коригування LOKO не зменшують cash, фактично виплачений іншим партнерам.</p>
+      </div>
+      <div class="grid two">
+        <div class="card"><h3 data-lang="en">Gross Bolt payout by month</h3><h3 data-lang="uk">Валові виплати Bolt за місяць</h3><div class="chart"><canvas id="actualChart"></canvas></div><div class="caption" data-lang="en">X-axis: month · Y-axis: UAH thousands. Source: Demand&amp;Supply Refunds.xlsx, Jan–Jun 2026.</div><div class="caption" data-lang="uk">Вісь X: місяць · вісь Y: тис. UAH. Джерело: Demand&amp;Supply Refunds.xlsx, Jan–Jun 2026.</div></div>
+        <div class="card"><h3 data-lang="en">Payout as % of total Ukraine Stores GMV</h3><h3 data-lang="uk">Виплати як % загального Ukraine Stores GMV</h3><div class="chart"><canvas id="rateChart"></canvas></div><div class="caption" data-lang="en">X-axis: month · Y-axis: % GMV. Six-month weighted country benchmark: 1.08%.</div><div class="caption" data-lang="uk">Вісь X: місяць · вісь Y: % GMV. Зважений country benchmark за шість місяців: 1.08%.</div></div>
+      </div>
+      <div class="decision risk">
+        <strong data-lang="en">₴987,467 gross payout in six months</strong><strong data-lang="uk">₴987,467 валових виплат за шість місяців</strong>
+        <p data-lang="en">Net deviation is ₴906,119, but netting understates the product problem: positive settlement gaps are direct Bolt-funded costs, while negative adjustments are separate reconciliation outcomes.</p>
+        <p data-lang="uk">Net deviation становить ₴906,119, але netting занижує product problem: позитивні settlement gaps — це прямі витрати Bolt, а негативні коригування — окремий результат reconciliation.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">02 · Partner view</div><h2 data-lang="en">The loss is concentrated in strategic partners</h2><h2 data-lang="uk">Втрати концентруються у стратегічних партнерів</h2></div></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th data-lang="en">Partner</th><th data-lang="uk">Партнер</th><th data-lang="en">Observed months</th><th data-lang="uk">Місяців</th><th data-lang="en">Bolt GMV, UAH</th><th data-lang="uk">Bolt GMV, UAH</th><th data-lang="en">Gross payout, UAH</th><th data-lang="uk">Валові виплати, UAH</th><th data-lang="en">Payout rate</th><th data-lang="uk">Payout rate</th></tr></thead>
+          <tbody>
+            <tr><td>Kopiyka</td><td>6</td><td>6,704,484</td><td class="bad">361,342</td><td class="bad">5.39%</td></tr>
+            <tr><td>VARUS</td><td>2</td><td>7,150,868</td><td class="bad">278,970</td><td class="bad">3.90%</td></tr>
+            <tr><td>Hop Hey</td><td>6</td><td>7,160,216</td><td>175,437</td><td>2.45%</td></tr>
+            <tr><td>Rukavychka</td><td>6</td><td>3,344,665</td><td>75,909</td><td>2.27%</td></tr>
+            <tr><td>Taistra</td><td>6</td><td>2,902,150</td><td>49,308</td><td>1.70%</td></tr>
+            <tr><td>LOKO</td><td>3</td><td>10,007,364</td><td>46,501</td><td>0.46%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="caption" data-lang="en">Rate = gross positive payout / Bolt GMV for available Jan–Jun 2026 partner-months. VARUS has two observed months, so its rate should be treated as directional.</div>
+      <div class="caption" data-lang="uk">Rate = валова позитивна виплата / Bolt GMV за доступні partner-months у Jan–Jun 2026. Для VARUS є лише два місяці, тому rate є directional.</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">03 · Forecast</div><h2 data-lang="en">Optimistic growth turns leakage into a €186k exposure</h2><h2 data-lang="uk">Оптимістичний ріст перетворює leakage на ризик €186k</h2></div></div>
+      <div class="grid two">
+        <div class="card"><h3 data-lang="en">Projected payout by month</h3><h3 data-lang="uk">Прогноз виплат за місяць</h3><div class="chart"><canvas id="forecastChart"></canvas></div><div class="caption" data-lang="en">X-axis: Oct 2026–Mar 2027 · Y-axis: EUR thousands. Optimistic Stores forecast, mix-adjusted partner payout rates.</div><div class="caption" data-lang="uk">Вісь X: Oct 2026–Mar 2027 · вісь Y: тис. EUR. Optimistic Stores forecast, mix-adjusted partner payout rates.</div></div>
+        <div class="card"><h3 data-lang="en">Share of commission revenue consumed</h3><h3 data-lang="uk">Частка комісійного доходу, яку з’їдають виплати</h3><div class="chart"><canvas id="marginChart"></canvas></div><div class="caption" data-lang="en">X-axis: month · Y-axis: % of commission revenue. Before shopper, support, payment, incentives and other operating costs.</div><div class="caption" data-lang="uk">Вісь X: місяць · вісь Y: % commission revenue. До shopper, support, payment, incentives та інших operating costs.</div></div>
+      </div>
+      <div class="table-wrap" style="margin-top:16px">
+        <table>
+          <thead><tr><th data-lang="en">Month</th><th data-lang="uk">Місяць</th><th>GMV, EUR</th><th data-lang="en">Commission, EUR</th><th data-lang="uk">Комісія, EUR</th><th data-lang="en">Projected payout, EUR</th><th data-lang="uk">Прогноз виплат, EUR</th><th data-lang="en">Payout / GMV</th><th data-lang="uk">Виплати / GMV</th><th data-lang="en">Commission consumed</th><th data-lang="uk">З’їдено комісії</th></tr></thead>
+          <tbody>
+            <tr><td>Oct 2026</td><td>873,213</td><td>86,771</td><td>20,413</td><td>2.34%</td><td class="bad">23.5%</td></tr>
+            <tr><td>Nov 2026</td><td>1,226,805</td><td>115,237</td><td>28,301</td><td>2.31%</td><td class="bad">24.6%</td></tr>
+            <tr><td>Dec 2026</td><td>1,375,464</td><td>126,836</td><td>31,202</td><td>2.27%</td><td class="bad">24.6%</td></tr>
+            <tr><td>Jan 2027</td><td>1,373,384</td><td>126,396</td><td>30,907</td><td>2.25%</td><td class="bad">24.5%</td></tr>
+            <tr><td>Feb 2027</td><td>1,529,529</td><td>139,604</td><td>33,728</td><td>2.21%</td><td class="bad">24.2%</td></tr>
+            <tr><td>Mar 2027</td><td>1,882,145</td><td>173,014</td><td>41,223</td><td>2.19%</td><td class="bad">23.8%</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>8,260,540</strong></td><td><strong>767,858</strong></td><td class="bad"><strong>185,776</strong></td><td><strong>2.25%</strong></td><td class="bad"><strong>24.2%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">04 · New launches</div><h2 data-lang="en">ATB and Fora make the issue urgent</h2><h2 data-lang="uk">ATB і Fora роблять проблему терміновою</h2></div></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th data-lang="en">Partner</th><th data-lang="uk">Партнер</th><th data-lang="en">Forecast GMV, EUR</th><th data-lang="uk">Прогноз GMV, EUR</th><th data-lang="en">Commission, EUR</th><th data-lang="uk">Комісія, EUR</th><th data-lang="en">Applied payout rate</th><th data-lang="uk">Payout rate</th><th data-lang="en">Projected payout, EUR</th><th data-lang="uk">Прогноз виплат, EUR</th><th data-lang="en">Commission consumed</th><th data-lang="uk">З’їдено комісії</th></tr></thead>
+          <tbody>
+            <tr><td>VARUS</td><td>1,489,864</td><td>82,000</td><td>3.90%</td><td class="bad">58,123</td><td class="bad">70.9%</td></tr>
+            <tr><td>ATB</td><td>1,580,942</td><td>63,238</td><td>2.70% benchmark</td><td class="bad">42,637</td><td class="bad">67.4%</td></tr>
+            <tr><td>Fora</td><td>861,623</td><td>51,697</td><td>2.70% benchmark</td><td class="bad">23,237</td><td class="bad">44.9%</td></tr>
+            <tr><td>Kopiyka</td><td>217,603</td><td>15,947</td><td>5.39%</td><td class="bad">11,728</td><td class="bad">73.5%</td></tr>
+            <tr><td>Rukavychka</td><td>385,958</td><td>26,305</td><td>2.27%</td><td>8,760</td><td>33.3%</td></tr>
+            <tr><td>Hop Hey</td><td>295,276</td><td>55,512</td><td>2.45%</td><td>7,235</td><td>13.0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="decision warn">
+        <strong data-lang="en">ATB and Fora use a 2.70% grocery benchmark</strong><strong data-lang="uk">Для ATB і Fora використано grocery benchmark 2.70%</strong>
+        <p data-lang="en">No historical reconciliation exists yet. The benchmark is pooled gross positive payout / Bolt GMV for current grocery partners. This is more relevant than the 1.08% country rate because these launches materially shift the mix toward high-volume grocery.</p>
+        <p data-lang="uk">Історичного reconciliation ще немає. Benchmark — pooled gross positive payout / Bolt GMV поточних grocery-партнерів. Він релевантніший за country rate 1.08%, бо ці запуски суттєво змінюють mix у бік high-volume grocery.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">05 · Why current tools fail</div><h2 data-lang="en">The trade-off is currently margin vs UX</h2><h2 data-lang="uk">Зараз доводиться обирати між margin та UX</h2></div></div>
+      <div class="grid three">
+        <div class="card"><h3 data-lang="en">Overbooking is incomplete</h3><h3 data-lang="uk">Overbooking не покриває все</h3><ul data-lang="en"><li>20% for weighted goods still misses real deltas.</li><li>Packaging is a fixed reserve, not an actual final charge.</li><li>A bag cannot be attached automatically to every weighted SKU.</li><li>Unused reserve must be returned.</li></ul><ul data-lang="uk"><li>20% для вагових товарів не покриває реальні deltas.</li><li>Пакування — fixed reserve, а не фактичне фінальне списання.</li><li>Пакет не можна автоматично додати до кожного вагового SKU.</li><li>Невикористаний reserve треба повертати.</li></ul></div>
+        <div class="card"><h3 data-lang="en">Per-item caps hurt substitutions</h3><h3 data-lang="uk">Per-item caps погіршують заміни</h3><ul data-lang="en"><li>Pricier but suitable alternatives are rejected.</li><li>Basket-level flexibility cannot offset removed items.</li><li>More removals, complaints and cancellation risk.</li><li>Bolt pays the difference when the partner allows +5–10%.</li></ul><ul data-lang="uk"><li>Дорожчі, але релевантні альтернативи відхиляються.</li><li>Basket-level flexibility не компенсує видалені товари.</li><li>Більше removals, complaints і cancellation risk.</li><li>Bolt платить різницю, коли партнер дозволяє +5–10%.</li></ul></div>
+        <div class="card"><h3 data-lang="en">More overbooking can hurt conversion</h3><h3 data-lang="uk">Більший overbooking може погіршити conversion</h3><ul data-lang="en"><li>The eater sees or funds a higher authorization.</li><li>The hold is not the expected final basket.</li><li>Romania feedback in the source document is directionally negative on 10% overbooking.</li><li>It still cannot guarantee full cost coverage.</li></ul><ul data-lang="uk"><li>Eater бачить або фінансує вищу authorization.</li><li>Hold не дорівнює очікуваному фінальному кошику.</li><li>Romania feedback у джерелі directionally negative щодо 10% overbooking.</li><li>Навіть це не гарантує повного покриття витрат.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">06 · Solution design</div><h2 data-lang="en">Recommended payment and picking flow</h2><h2 data-lang="uk">Рекомендований payment та picking flow</h2></div></div>
+      <div class="flow">
+        <div class="step"><div class="step-no">01</div><b data-lang="en">Authorize</b><b data-lang="uk">Authorize</b><p data-lang="en">Place a hold for the estimated basket.</p><p data-lang="uk">Поставити hold на орієнтовну суму кошика.</p></div>
+        <div class="step"><div class="step-no">02</div><b data-lang="en">Pick &amp; replace</b><b data-lang="uk">Зібрати й замінити</b><p data-lang="en">Partner returns item-level final quantities and substitutions.</p><p data-lang="uk">Партнер повертає final quantities і substitutions на рівні item.</p></div>
+        <div class="step"><div class="step-no">03</div><b data-lang="en">Confirm</b><b data-lang="uk">Підтвердити</b><p data-lang="en">Show deltas and capture eater consent where required.</p><p data-lang="uk">Показати deltas і отримати consent eater, де потрібно.</p></div>
+        <div class="step"><div class="step-no">04</div><b data-lang="en">Release &amp; charge</b><b data-lang="uk">Release &amp; charge</b><p data-lang="en">Release the original hold and charge the actual basket.</p><p data-lang="uk">Зняти початковий hold і списати фактичний кошик.</p></div>
+        <div class="step"><div class="step-no">05</div><b data-lang="en">Reconcile</b><b data-lang="uk">Reconcile</b><p data-lang="en">Store delta reason: replacement, weight or packaging.</p><p data-lang="uk">Зберегти reason для delta: replacement, weight або packaging.</p></div>
+      </div>
+      <div class="decision">
+        <strong data-lang="en">Keep item-level transparency; change payment settlement</strong><strong data-lang="uk">Зберегти item-level transparency; змінити payment settlement</strong>
+        <p data-lang="en">Basket-level pricing alone is not recommended because it reduces item visibility. The MVP should preserve detailed item changes while allowing the final authorized/charged total to reflect the basket actually delivered.</p>
+        <p data-lang="uk">Basket-level pricing саме по собі не рекомендоване, бо зменшує item visibility. MVP має зберегти детальні зміни товарів, але дозволити фінальному списанню відповідати фактично доставленому кошику.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">07 · Decision framework</div><h2 data-lang="en">Alternatives do not solve both economics and UX</h2><h2 data-lang="uk">Альтернативи не вирішують одночасно economics та UX</h2></div></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th data-lang="en">Option</th><th data-lang="uk">Опція</th><th data-lang="en">Margin protection</th><th data-lang="uk">Захист margin</th><th>UX</th><th data-lang="en">Scales to ATB/Fora</th><th data-lang="uk">Масштабується на ATB/Fora</th><th data-lang="en">Verdict</th><th data-lang="uk">Висновок</th></tr></thead>
+          <tbody>
+            <tr><td data-lang="en">Keep Bolt-funded deltas</td><td data-lang="uk">Залишити Bolt-funded deltas</td><td class="bad">Low</td><td>Good</td><td class="bad">No</td><td data-lang="en">Reject</td><td data-lang="uk">Відхилити</td></tr>
+            <tr><td data-lang="en">Increase overbooking</td><td data-lang="uk">Збільшити overbooking</td><td>Medium</td><td class="bad">Weak</td><td>Partial</td><td data-lang="en">Temporary only</td><td data-lang="uk">Лише тимчасово</td></tr>
+            <tr><td data-lang="en">Cheaper-or-equal replacements</td><td data-lang="uk">Лише дешевші/рівні заміни</td><td class="good">High</td><td class="bad">Poor</td><td class="bad">No</td><td data-lang="en">Reject</td><td data-lang="uk">Відхилити</td></tr>
+            <tr><td data-lang="en">Basket-level price only</td><td data-lang="uk">Лише basket-level price</td><td>High</td><td class="bad">Low transparency</td><td>Partial</td><td data-lang="en">Not preferred</td><td data-lang="uk">Не рекомендовано</td></tr>
+            <tr><td data-lang="en">Second transaction</td><td data-lang="uk">Друга транзакція</td><td class="good">High</td><td class="good">Good</td><td class="good">Yes</td><td class="good" data-lang="en">Recommend</td><td class="good" data-lang="uk">Рекомендується</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">08 · Measurement</div><h2 data-lang="en">Pilot success criteria</h2><h2 data-lang="uk">Критерії успіху пілота</h2></div></div>
+      <div class="grid three">
+        <div class="card"><h3 data-lang="en">Economics</h3><h3 data-lang="uk">Economics</h3><ul data-lang="en"><li>≥90% reduction in Bolt-funded positive deltas.</li><li>Net payment fees vs avoided payout.</li><li>Commission retained after all variable costs.</li></ul><ul data-lang="uk"><li>≥90% зменшення Bolt-funded positive deltas.</li><li>Net payment fees проти avoided payout.</li><li>Збережена комісія після variable costs.</li></ul></div>
+        <div class="card"><h3 data-lang="en">Payment reliability</h3><h3 data-lang="uk">Payment reliability</h3><ul data-lang="en"><li>Final charge success rate.</li><li>Release latency and duplicate-hold rate.</li><li>Fallback and debt incidence.</li></ul><ul data-lang="uk"><li>Final charge success rate.</li><li>Release latency і duplicate-hold rate.</li><li>Fallback і debt incidence.</li></ul></div>
+        <div class="card"><h3 data-lang="en">Eater &amp; operations</h3><h3 data-lang="uk">Eater та operations</h3><ul data-lang="en"><li>Checkout conversion vs overbooking control.</li><li>Replacement acceptance and item removal.</li><li>Cancellation, complaints and reorder rate.</li></ul><ul data-lang="uk"><li>Checkout conversion проти overbooking control.</li><li>Replacement acceptance і item removal.</li><li>Cancellation, complaints і reorder rate.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section card">
+      <h3 data-lang="en">Methodology and limitations</h3><h3 data-lang="uk">Методологія та обмеження</h3>
+      <ul data-lang="en">
+        <li>Actual payout is the positive partner GMV minus Bolt GMV difference in the refund workbook. It combines substitutions, weight, packaging and other changes not reflected in the system; the file does not split these drivers.</li>
+        <li>The base forecast applies each existing partner’s historical gross payout rate. ATB and Fora use the pooled grocery benchmark of 2.70%. All other forecast partners use the country benchmark of 1.08%.</li>
+        <li>Forecast uses the optimistic Oct 2026–Mar 2027 scenario. FX is 50.89 UAH/EUR from the forecast assumptions.</li>
+        <li>“Commission consumed” is payout / commission revenue, not full contribution margin. Shopper, support, incentives, payment fees and other costs are excluded.</li>
+        <li>Second payment will not recover 100% in every case: failed charges, payment-method constraints and customer protection rules require a fallback design.</li>
+      </ul>
+      <ul data-lang="uk">
+        <li>Фактична виплата — позитивна різниця partner GMV мінус Bolt GMV у refund workbook. Вона об’єднує заміни, вагу, пакування та інші зміни, не відображені в системі; файл не розділяє ці драйвери.</li>
+        <li>Base forecast застосовує історичний gross payout rate для чинних партнерів. Для ATB і Fora використано pooled grocery benchmark 2.70%. Для решти партнерів — country benchmark 1.08%.</li>
+        <li>Прогноз використовує optimistic scenario Oct 2026–Mar 2027. FX 50.89 UAH/EUR взято з assumptions forecast.</li>
+        <li>“Commission consumed” = payout / commission revenue, а не повна contribution margin. Shopper, support, incentives, payment fees та інші витрати не включено.</li>
+        <li>Друга транзакція не поверне 100% у кожному кейсі: failed charges, обмеження payment methods і customer protection rules потребують fallback design.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <div class="source">
+        <strong data-lang="en">Sources</strong><strong data-lang="uk">Джерела</strong><br>
+        Demand&amp;Supply Refunds.xlsx · FC Stores Forecast Oct26–Mar27.xlsx · Replacements.docx ·
+        <a href="https://taxify.atlassian.net/servicedesk/customer/portal/47/LSS-64024?isEligibleForUserSurvey=true">Jira LSS-64024</a>
+      </div>
+      <div class="source" style="text-align:right">Prepared by Yuliia Nikolaieva<br>21 Aug 2026 · Internal business case</div>
+    </footer>
+  </main>
+
+  <script>
+    const monthsActual = ['Jan','Feb','Mar','Apr','May','Jun'];
+    const monthsForecast = ['Oct 26','Nov 26','Dec 26','Jan 27','Feb 27','Mar 27'];
+    const green = '#2f7d5b', red = '#b44747', amber = '#94651a', grid = '#dce5df', muted = '#637169';
+    Chart.defaults.font.family = 'Inter, system-ui, sans-serif';
+    Chart.defaults.color = muted;
+    const common = {responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{displayColors:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,grid:{color:grid}}}};
+    new Chart(document.getElementById('actualChart'),{type:'bar',data:{labels:monthsActual,datasets:[{data:[91.8,102.5,104.8,162.8,303.9,221.7],backgroundColor:red,borderRadius:5}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>'₴'+c.raw.toFixed(1)+'k'}}},scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'Gross payout (UAH k)'}}}}});
+    new Chart(document.getElementById('rateChart'),{type:'line',data:{labels:monthsActual,datasets:[{data:[1.01,.98,.80,1.04,1.48,.98],borderColor:amber,backgroundColor:'rgba(148,101,26,.12)',fill:true,tension:.25,pointRadius:4}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>c.raw.toFixed(2)+'%'}}},scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'Gross payout / GMV (%)'},ticks:{callback:v=>v+'%'}}}}});
+    new Chart(document.getElementById('forecastChart'),{type:'bar',data:{labels:monthsForecast,datasets:[{data:[20.4,28.3,31.2,30.9,33.7,41.2],backgroundColor:red,borderRadius:5}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>'€'+c.raw.toFixed(1)+'k'}}},scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'Projected payout (EUR k)'}}}}});
+    new Chart(document.getElementById('marginChart'),{type:'line',data:{labels:monthsForecast,datasets:[{data:[23.5,24.6,24.6,24.5,24.2,23.8],borderColor:green,backgroundColor:'rgba(47,125,91,.12)',fill:true,tension:.25,pointRadius:4}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>c.raw.toFixed(1)+'%'}}},scales:{...common.scales,y:{...common.scales.y,min:0,max:30,title:{display:true,text:'Commission consumed (%)'},ticks:{callback:v=>v+'%'}}}}});
+    function setLanguage(lang){
+      document.body.className='lang-'+lang;
+      document.documentElement.lang=lang;
+      document.getElementById('enBtn').classList.toggle('active',lang==='en');
+      document.getElementById('ukBtn').classList.toggle('active',lang==='uk');
+      localStorage.setItem('businessCaseLanguage',lang);
+    }
+    setLanguage(localStorage.getItem('businessCaseLanguage') || 'en');
+  </script>
+</body>
+</html>
