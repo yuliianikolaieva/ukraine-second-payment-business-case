@@ -44,8 +44,10 @@
     .chart{height:280px;position:relative}
     .chart.short{height:235px}
     .caption{font-size:10.5px;color:var(--muted);margin-top:9px;line-height:1.45}
-    .decision{border-left:4px solid var(--green);background:var(--green-soft);border-radius:10px;padding:15px 17px;margin-top:18px}
-    .decision strong{display:block;color:#214d38;margin-bottom:5px}
+    .decision{border-left:4px solid var(--green);background:var(--green-soft);border-radius:10px;padding:15px 17px;margin-top:18px;line-height:1.55}
+    .decision strong{display:block;color:#214d38;margin-bottom:6px;font-size:14px}
+    .decision p{margin:0;color:inherit;line-height:1.55}
+    .decision .decision-body{max-width:72ch}
     .risk{border-left-color:var(--red);background:var(--red-soft)}
     .risk strong{color:#7d3030}
     .warn{border-left-color:var(--amber);background:var(--amber-soft)}
@@ -70,8 +72,9 @@
     .ask-side{border-left:1px solid var(--line);padding-left:18px}
     .source{font-size:11px;color:var(--muted);line-height:1.55}
     footer{margin-top:36px;border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;gap:20px}
-    [data-lang]{display:none}
-    body.lang-en [data-lang="en"],body.lang-uk [data-lang="uk"]{display:revert}
+    [data-lang]{display:none !important}
+    body.lang-en [data-lang="en"],body.lang-uk [data-lang="uk"]{display:revert !important}
+    body.lang-en .decision-body[data-lang="en"],body.lang-uk .decision-body[data-lang="uk"]{display:block !important}
     @media(max-width:900px){.kpis,.three{grid-template-columns:1fr 1fr}.two,.ask{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.ask-side{border-left:0;border-top:1px solid var(--line);padding:14px 0 0}}
     @media(max-width:560px){.shell{padding:20px 15px 45px}header{display:block}.lang{margin-top:14px;position:static}.kpis,.three,.flow{grid-template-columns:1fr}.kpi{border-left:0;border-top:1px solid #49675a;padding:12px 0 0}.kpi:first-child{border-top:0}.section-head{display:block}.chart{height:240px}}
     @media print{body{background:#fff}.shell{max-width:none;padding:12mm}.lang{display:none}.card,.ask,.hero,.table-wrap{break-inside:avoid}.section{break-inside:avoid;margin-top:20px}}
@@ -97,17 +100,17 @@
       <div data-lang="en">
         <div class="eyebrow" style="color:#8fd0ae">Business case summary</div>
         <h2>Charge the final Stores basket after picking — not the pre-pick checkout amount.</h2>
-        <p>Today the eater is charged before picking. After substitutions, weight and packaging, the partner act (Y) is often higher than what the eater paid (X). Commission sits on acts, but Bolt still funds the cash gap Y−X. Overbooking and price caps only trade margin for UX. Ukraine MVP: <strong>hold → disclose final basket → consent where needed → release → final charge</strong> (rides-style, not Glovo silent upcharge). Without it, optimistic Stores growth implies ~<strong>€185.8k</strong> gap in six months (~24% of Stores commission).</p>
+        <p>Today the eater is charged before picking. After substitutions, weight and packaging, the partner act (Y) is often higher than what the eater paid (X). Commission on acts is fine — the DF leak is <strong>Service Fee</strong> (SF ≈ % of eater basket) never billed on Y−X, plus Bolt funding the settlement gap. Ukraine MVP: <strong>hold → disclose final basket → consent where needed → release → final charge</strong> (rides-style, not Glovo silent upcharge). Without it: ~<strong>€185.8k</strong> settlement gap and ~<strong>€9.7k</strong> lost SF in six optimistic months.</p>
       </div>
       <div data-lang="uk">
         <div class="eyebrow" style="color:#8fd0ae">Short summary бізнес-кейсу</div>
         <h2>Списувати фінальний кошик Stores після збірки — не суму з checkout до picking.</h2>
-        <p>Зараз eater сплачує до збірки. Після замін, ваги й пакування акт партнера (Y) часто вищий за те, що сплатив eater (X). Комісія — з актів, але gap Y−X фінансує Bolt. Overbooking і price caps лише міняють margin на UX. Ukraine MVP: <strong>hold → показати фінальний кошик → consent де потрібно → release → фінальне списання</strong> (як у rides, не silent upcharge Glovo). Без цього optimistic ріст Stores ≈ <strong>€185.8k</strong> gap за шість місяців (~24% комісії Stores).</p>
+        <p>Зараз eater сплачує до збірки. Після замін, ваги й пакування акт партнера (Y) часто вищий за те, що сплатив eater (X). Комісія з актів ок — дірка DF це <strong>Service Fee</strong> (SF ≈ % від кошика eater), який не збирається на Y−X, плюс Bolt фінансує settlement gap. Ukraine MVP: <strong>hold → показати фінальний кошик → consent де потрібно → release → фінальне списання</strong> (як у rides, не silent upcharge Glovo). Без цього: ~<strong>€185.8k</strong> settlement gap і ~<strong>€9.7k</strong> втраченого SF за шість optimistic місяців.</p>
       </div>
       <div class="grid kpis">
         <div class="kpi"><div class="k-label" data-lang="en">Observed gross payout</div><div class="k-label" data-lang="uk">Фактичні валові виплати</div><div class="k-value">€19.4k</div><div class="k-note">Jan–Jun 2026 · FX 50.89</div></div>
         <div class="kpi"><div class="k-label" data-lang="en">Forecast payout</div><div class="k-label" data-lang="uk">Прогноз виплат</div><div class="k-value">€185.8k</div><div class="k-note">Oct 2026–Mar 2027</div></div>
-        <div class="kpi"><div class="k-label" data-lang="en">Gap vs commission</div><div class="k-label" data-lang="uk">Gap vs комісія</div><div class="k-value">24.2%</div><div class="k-note" data-lang="en">forecast gap ÷ commission on acts</div><div class="k-note" data-lang="uk">прогнозний gap ÷ комісія з актів</div></div>
+        <div class="kpi"><div class="k-label" data-lang="en">Lost SF on gap (est.)</div><div class="k-label" data-lang="uk">Втрачений SF на gap (оцінка)</div><div class="k-value">€9.7k</div><div class="k-note" data-lang="en">~5.2% SF × €185.8k forecast gap</div><div class="k-note" data-lang="uk">~5.2% SF × €185.8k прогнозний gap</div></div>
         <div class="kpi"><div class="k-label" data-lang="en">Peak monthly payout</div><div class="k-label" data-lang="uk">Пікова місячна виплата</div><div class="k-value">€41.2k</div><div class="k-note">Mar 2027</div></div>
       </div>
     </section>
@@ -171,9 +174,14 @@
         <div class="card"><h3 data-lang="en">Payout as % of total Ukraine Stores GMV</h3><h3 data-lang="uk">Виплати як % загального Ukraine Stores GMV</h3><div class="chart"><canvas id="rateChart"></canvas></div><div class="caption" data-lang="en">X-axis: month · Y-axis: % GMV. Six-month weighted country benchmark: 1.08%.</div><div class="caption" data-lang="uk">Вісь X: місяць · вісь Y: % GMV. Зважений country benchmark за шість місяців: 1.08%.</div></div>
       </div>
       <div class="decision risk">
-        <strong data-lang="en">€19.4k gross payout in six months (₴987k)</strong><strong data-lang="uk">€19.4k валових виплат за шість місяців (₴987k)</strong>
-        <p data-lang="en">Positive settlement gaps are paid by Bolt Food Ukraine from commission. Local ops already spends <strong>more than 5 hours every month</strong> just to reconcile partner-vs-Bolt differences across acts and invoices.</p>
-        <p data-lang="uk">Позитивні settlement gaps сплачує Bolt Food Ukraine з комісії. Локальна команда вже витрачає <strong>понад 5 годин щомісяця</strong>, лише щоб звірити різниці partner-vs-Bolt по актах і інвойсах.</p>
+        <div class="decision-body" data-lang="en">
+          <strong>€19.4k gross payout in six months (₴987k)</strong>
+          <p>Positive settlement gaps are covered by Bolt Food Ukraine. That undercharged basket also means <strong>lost Service Fee (SF)</strong> — SF is a % of the eater basket and sits in DF profitability. Local ops already spends <strong>over 5 hours every month</strong> reconciling partner-vs-Bolt acts and invoices.</p>
+        </div>
+        <div class="decision-body" data-lang="uk">
+          <strong>€19.4k валових виплат за шість місяців (₴987k)</strong>
+          <p>Позитивні settlement gaps покриває Bolt Food Ukraine. Недосписаний кошик також означає <strong>втрачений Service Fee (SF)</strong> — SF береться як % від кошика eater і входить у прибутковість DF. Локальна команда вже витрачає <strong>понад 5 годин щомісяця</strong> на звірку актів і інвойсів partner-vs-Bolt.</p>
+        </div>
       </div>
     </section>
 <section class="section">
@@ -216,66 +224,51 @@
       </div>
     </section>
 <section class="section">
-      <div class="section-head"><div><div class="eyebrow">06 · Logic</div><h2 data-lang="en">How the gap works if commission is on partner acts</h2><h2 data-lang="uk">Як працює gap, якщо комісія з актів партнера</h2></div></div>
+      <div class="section-head"><div><div class="eyebrow">06 · Logic</div><h2 data-lang="en">Gap = lost DF money via Service Fee (SF), not “broken commission”</h2><h2 data-lang="uk">Gap = втрачені гроші DF через Service Fee (SF), не «зламана комісія»</h2></div></div>
       <div class="card">
-        <p data-lang="en" style="margin-bottom:10px;color:var(--ink)"><strong>Yes — commission on partner acts (Y) is better than commission on Bolt checkout (X).</strong> The gap is <em>not</em> “wrong commission base”. The gap is a <strong>cash mismatch</strong>: partner is settled on what was shipped (Y), but the eater was only charged the pre-pick amount (X).</p>
-        <p data-lang="uk" style="margin-bottom:10px;color:var(--ink)"><strong>Так — комісія з актів партнера (Y) краща, ніж якби брали з checkout Bolt (X).</strong> Gap — це <em>не</em> «неправильна база комісії». Gap — це <strong>розрив у грошах</strong>: з партнером рахуємось за тим, що відвантажили (Y), а з eater списали лише pre-pick суму (X).</p>
+        <p data-lang="en" style="margin-bottom:10px;color:var(--ink)"><strong>Commission on partner acts is fine.</strong> Partner commission sits on what was shipped (Y). The profitability leak from an undercharged eater basket is elsewhere: <strong>Service Fee (SF)</strong> — part of DF — is charged as a <strong>% of the eater basket</strong>. If the eater pays X but the partner shipped Y &gt; X, Bolt never collects SF on the delta.</p>
+        <p data-lang="uk" style="margin-bottom:10px;color:var(--ink)"><strong>Комісія з актів партнера тут ні при чому.</strong> Вона сидить на відвантаженому (Y). Дірка в прибутковості від недосписаного кошика — в іншому: <strong>Service Fee (SF)</strong> — частина DF — береться як <strong>% від кошика eater</strong>. Якщо eater сплатив X, а партнер відвантажив Y &gt; X, SF на дельту Bolt не збирає.</p>
         <ul data-lang="en">
-          <li><strong>X</strong> = amount charged to the eater (Bolt checkout / hold) — original order before picking.</li>
-          <li><strong>Y</strong> = partner act GMV after picking (replacements, weight, packaging) — matches what was actually shipped.</li>
-          <li><strong>Commission</strong> ≈ rate × <strong>Y</strong> — so yes, Bolt earns commission on the full shipped basket, which is better than rate × X.</li>
-          <li><strong>What Bolt pays the partner</strong> ≈ Y − Commission(Y). <strong>What Bolt received from the eater for goods</strong> ≈ X.</li>
-          <li><strong>Gap</strong> = Y − X = the missing customer cash. Bolt still has to cover settlement as if the basket were Y, without having collected that delta from the eater.</li>
-          <li><strong>Net from this layer</strong> ≈ Commission(Y) − Gap = rate×Y − (Y−X).</li>
+          <li><strong>X</strong> = eater checkout / charged basket (before / without final top-up).</li>
+          <li><strong>Y</strong> = partner act = what was actually shipped (replacements, weight, bags…).</li>
+          <li><strong>Settlement gap</strong> = Y − X — cash Bolt still funds to close the partner act (eater was not topped up).</li>
+          <li><strong>SF</strong> ≈ SF% × eater basket. Observed Ukraine Stores SF ≈ <strong>5.2% of GMV</strong> (Databricks Jan–Jul 2026).</li>
+          <li><strong>Lost SF</strong> ≈ SF% × (Y − X) — DF revenue never billed because the charged basket was too low. This hits profitability even though commission on Y is correct.</li>
         </ul>
         <ul data-lang="uk">
-          <li><strong>X</strong> = сума, списана з eater (Bolt checkout / hold) — початкове замовлення до збірки.</li>
-          <li><strong>Y</strong> = GMV за актами партнера після збірки (заміни, вага, пакування) — збігається з тим, що реально відвантажили.</li>
-          <li><strong>Комісія</strong> ≈ ставка × <strong>Y</strong> — так, Bolt бере комісію з повного відвантаженого кошика; це краще, ніж ставка × X.</li>
-          <li><strong>Що Bolt платить партнеру</strong> ≈ Y − Комісія(Y). <strong>Що Bolt отримав від eater за товари</strong> ≈ X.</li>
-          <li><strong>Gap</strong> = Y − X = відсутні гроші клієнта. Bolt усе одно закриває settlement як за кошик Y, не зібравши цю дельту з eater.</li>
-          <li><strong>Нетто з цього шару</strong> ≈ Комісія(Y) − Gap = ставка×Y − (Y−X).</li>
+          <li><strong>X</strong> = кошик eater на checkout / списання (без фінального досписання).</li>
+          <li><strong>Y</strong> = акт партнера = що реально відвантажили (заміни, вага, пакети…).</li>
+          <li><strong>Settlement gap</strong> = Y − X — cash, який Bolt досі фінансує, щоб закрити акт (eater не досписаний).</li>
+          <li><strong>SF</strong> ≈ SF% × кошик eater. Факт Ukraine Stores SF ≈ <strong>5.2% від GMV</strong> (Databricks Jan–Jul 2026).</li>
+          <li><strong>Втрачений SF</strong> ≈ SF% × (Y − X) — DF-виручка, яку не виставили, бо списаний кошик був занизький. Це б’є по прибутковості, навіть коли комісія з Y коректна.</li>
         </ul>
         <div class="table-wrap" style="margin-top:12px">
           <table>
             <thead>
               <tr>
-                <th data-lang="en">Scenario</th><th data-lang="uk">Сценарій</th>
-                <th data-lang="en">Eater pays</th><th data-lang="uk">Eater платить</th>
-                <th data-lang="en">Partner act</th><th data-lang="uk">Акт партнера</th>
-                <th data-lang="en">Commission base</th><th data-lang="uk">База комісії</th>
-                <th data-lang="en">Net ≈</th><th data-lang="uk">Нетто ≈</th>
+                <th data-lang="en">Layer</th><th data-lang="uk">Шар</th>
+                <th data-lang="en">Jan–Jun 2026</th><th data-lang="uk">Jan–Jun 2026</th>
+                <th data-lang="en">Oct’26–Mar’27 forecast</th><th data-lang="uk">Прогноз Oct’26–Mar’27</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td data-lang="en">A · Commission on checkout only (worse)</td><td data-lang="uk">A · Комісія лише з checkout (гірше)</td>
-                <td>100</td><td>105</td><td>X = 100</td>
-                <td data-lang="en">10 − 5 = <span class="bad">5</span></td><td data-lang="uk">10 − 5 = <span class="bad">5</span></td>
+                <td data-lang="en">Settlement gap (Y − X)</td><td data-lang="uk">Settlement gap (Y − X)</td>
+                <td class="bad">€19.4k</td><td class="bad">€185.8k</td>
               </tr>
               <tr>
-                <td data-lang="en">B · Today: commission on acts, eater not recharged</td><td data-lang="uk">B · Сьогодні: комісія з актів, eater не досписаний</td>
-                <td>100</td><td>105</td><td>Y = 105</td>
-                <td data-lang="en">10.50 − 5 = <span class="bad">5.50</span></td><td data-lang="uk">10.50 − 5 = <span class="bad">5.50</span></td>
+                <td data-lang="en">Stores SF % of GMV (actual)</td><td data-lang="uk">Stores SF % від GMV (факт)</td>
+                <td>~5.2%</td><td>~5.2% (assumed)</td>
               </tr>
               <tr>
-                <td data-lang="en">C · Second payment: eater pays final basket</td><td data-lang="uk">C · Друга транзакція: eater платить фінальний кошик</td>
-                <td>105</td><td>105</td><td>Y = 105</td>
-                <td class="good" data-lang="en">10.50 − 0 = <strong>10.50</strong></td><td class="good" data-lang="uk">10.50 − 0 = <strong>10.50</strong></td>
+                <td data-lang="en">Lost SF ≈ 5.2% × gap</td><td data-lang="uk">Втрачений SF ≈ 5.2% × gap</td>
+                <td class="bad">≈ €1.0k</td><td class="bad">≈ €9.7k</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p data-lang="en" style="margin-top:10px;color:var(--ink)">Example assumes 10% commission, X = €100, Y = €105. <strong>B is better than A</strong> (+€0.50 of commission on the delta). <strong>C is much better than B</strong> because the full €5 gap stops being Bolt-funded. Second payment does not “fix” commission on acts — it removes the cash hole next to that commission.</p>
-        <p data-lang="uk" style="margin-top:10px;color:var(--ink)">Приклад: комісія 10%, X = €100, Y = €105. <strong>B краще за A</strong> (+€0.50 комісії на дельті). <strong>C набагато краще за B</strong>, бо повні €5 gap перестають бути на Bolt. Друга транзакція не «виправляє» комісію з актів — вона прибирає грошову дірку поруч із цією комісією.</p>
-        <ul data-lang="en" style="margin-top:10px">
-          <li><strong>What 24.2% means:</strong> forecast Gap €185.8k ÷ forecast Commission €767.9k. Not “24% of all Food Ukraine” — about one quarter of Stores commission euros in the optimistic window is offset by the gap.</li>
-          <li>Jan–Jun 2026 actuals: ≈ €19.4k / €240.5k = <strong>8.1%</strong>. Forecast rises as grocery mix (VARUS / ATB / Fora) grows and commission % falls.</li>
-        </ul>
-        <ul data-lang="uk" style="margin-top:10px">
-          <li><strong>Що означає 24.2%:</strong> прогнозний Gap €185.8k ÷ прогнозна Комісія €767.9k. Не “24% усього Food України” — близько чверті євро комісії Stores в optimistic вікні з’їдає gap.</li>
-          <li>Факт Jan–Jun 2026: ≈ €19.4k / €240.5k = <strong>8.1%</strong>. У прогнозі росте, бо grocery mix (VARUS / ATB / Fora) збільшується, а commission % падає.</li>
-        </ul>
+        <p data-lang="en" style="margin-top:10px;color:var(--ink)"><strong>Example:</strong> X = €100, Y = €105, SF 5.2% → settlement gap €5 <em>and</em> lost SF €0.26 on the delta. With second payment the eater pays €105 → SF on the full basket, gap €0. <strong>Do not read the gap as “commission is wrong”</strong> — commission on acts already uses Y. The DF miss is SF (plus the cash settlement of Y−X).</p>
+        <p data-lang="uk" style="margin-top:10px;color:var(--ink)"><strong>Приклад:</strong> X = €100, Y = €105, SF 5.2% → settlement gap €5 <em>і</em> втрачений SF €0.26 на дельті. З другою транзакцією eater платить €105 → SF з повного кошика, gap €0. <strong>Не читайте gap як «комісія неправильна»</strong> — комісія з актів уже на Y. Промах DF — це SF (плюс cash settlement Y−X).</p>
       </div>
     </section>
 <section class="section">
@@ -330,7 +323,8 @@
             <tr><td data-lang="en">Stores commission €</td><td data-lang="uk">Stores комісія €</td><td>€59.6k / €46.2k</td><td>€240.5k</td><td>€767.9k</td></tr>
             <tr><td data-lang="en">Stores CP L1</td><td data-lang="uk">Stores CP L1</td><td>€13.7k / 2.66% · Aug €10.4k / 2.47%</td><td class="bad">−€56.9k / −3.2%</td><td>~€220k if Jul CP% holds, before gap</td></tr>
             <tr><td data-lang="en">Settlement gap (acts − checkout)</td><td data-lang="uk">Settlement gap (акти − checkout)</td><td>~€3–6k / mo</td><td class="bad">€19.4k</td><td class="bad">€185.8k · 2.25% GMV</td></tr>
-            <tr><td data-lang="en">Gap ÷ Stores commission</td><td data-lang="uk">Gap ÷ комісія Stores</td><td>~5–10%</td><td>8.1%</td><td class="bad">24.2%</td></tr>
+            <tr><td data-lang="en">Lost SF on gap (≈5.2%)</td><td data-lang="uk">Втрачений SF на gap (≈5.2%)</td><td>~€0.2–0.3k / mo</td><td class="bad">≈ €1.0k</td><td class="bad">≈ €9.7k</td></tr>
+            <tr><td data-lang="en">Gap ÷ Stores commission (size only)</td><td data-lang="uk">Gap ÷ комісія Stores (лише масштаб)</td><td>~5–10%</td><td>8.1%</td><td>24.2%</td></tr>
             <tr><td data-lang="en">Gap ÷ Stores CP L1</td><td data-lang="uk">Gap ÷ Stores CP L1</td><td class="bad">~30–45% of Jul CP</td><td class="bad">&gt;100% (CP was negative)</td><td class="bad">can erase most of thin Stores CP</td></tr>
             <tr><td data-lang="en">Ukraine Food CP L1 (Stores+Restaurants)</td><td data-lang="uk">CP L1 країни (Stores+Restaurants)</td><td>€995k / 10.65% · Aug €704k / 10.29%</td><td>~€4.0m / ~8.3%</td><td>restaurant-led; Stores drag grows</td></tr>
           </tbody>
@@ -592,7 +586,7 @@
         <li>Actual payout is the positive partner GMV minus Bolt GMV difference in the refund workbook. It combines substitutions, weight, packaging and other changes not reflected in the system; the file does not split these drivers.</li>
         <li>The base forecast applies each existing partner’s historical gross payout rate. ATB and Fora use the pooled grocery benchmark of 2.70%. All other forecast partners use the country benchmark of 1.08%.</li>
         <li>Forecast uses the optimistic Oct 2026–Mar 2027 scenario. Actual UAH payouts and partner tables are converted at 50.89 UAH/EUR from the forecast assumptions.</li>
-        <li>Commission is treated as accruing on partner act GMV (Y). Gap = act GMV − checkout charge. Net ≈ commission(Y) − gap. “24.2%” = forecast gap ÷ forecast commission, not full CP L1.</li>
+        <li>Commission is accrued on partner act GMV (Y) and is not the gap driver. Service Fee (SF) is charged as a % of the eater basket (~5.2% of Ukraine Stores GMV in 2026 YTD) and sits in DF profitability — so undercharging the eater loses SF ≈ 5.2% × gap (~€1.0k on Jan–Jun €19.4k gap; ~€9.7k on forecast €185.8k gap), on top of funding settlement Y−X.</li>
         <li>Second payment will not recover 100% in every case: failed charges, payment-method constraints and customer protection rules require a fallback design.</li>
         <li>Legal conclusions (LSS-64024, Liisa, Mar 2026): Glovo-style silent upcharge is non-compliant / high-risk under EU consumer law and strongly not recommended in EU or non-EU; Ukraine may proceed only with clear checkout disclosure, consent where needed, commercial + Legal sign-off, and a separate payment-services review still open. Bolt ride-hailing already final-charges after the trip on an estimate — the Stores MVP should mirror that disclosed estimate → final charge pattern, not Glovo’s opaque upcharge.</li>
       </ul>
@@ -600,7 +594,7 @@
         <li>Фактична виплата — позитивна різниця partner GMV мінус Bolt GMV у refund workbook. Вона об’єднує заміни, вагу, пакування та інші зміни, не відображені в системі; файл не розділяє ці драйвери.</li>
         <li>Base forecast застосовує історичний gross payout rate для чинних партнерів. Для ATB і Fora використано pooled grocery benchmark 2.70%. Для решти партнерів — country benchmark 1.08%.</li>
         <li>Прогноз використовує optimistic scenario Oct 2026–Mar 2027. Фактичні UAH-виплати та partner-таблиці конвертовано за 50.89 UAH/EUR з assumptions forecast.</li>
-        <li>Комісія вважається нарахованою від GMV актів партнера (Y). Gap = GMV акта − checkout. Нетто ≈ комісія(Y) − gap. “24.2%” = прогнозний gap ÷ прогнозна комісія, не повний CP L1.</li>
+        <li>Комісія нараховується від GMV актів (Y) і не є драйвером gap. Service Fee (SF) — % від кошика eater (~5.2% Ukraine Stores GMV у 2026 YTD) і входить у прибутковість DF: недосписання eater = втрата SF ≈ 5.2% × gap (~€1.0k на Jan–Jun €19.4k; ~€9.7k на прогноз €185.8k), плюс фінансування settlement Y−X.</li>
         <li>Друга транзакція не поверне 100% у кожному кейсі: failed charges, обмеження payment methods і customer protection rules потребують fallback design.</li>
         <li>Висновки Legal (LSS-64024, Liisa, бер. 2026): silent upcharge як у Glovo — non-compliant / high-risk за EU consumer law і категорично не рекомендований у EU та non-EU; Україна можлива лише з чітким disclosure на checkout, consent де потрібно, commercial + Legal sign-off; окремий payment-services review ще відкритий. У Bolt ride-hailing уже є фінальне списання після поїздки від estimate — Stores MVP має дзеркалити цей disclosed estimate → final charge, а не opaque upcharge Glovo.</li>
       </ul>
