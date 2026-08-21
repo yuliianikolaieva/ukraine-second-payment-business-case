@@ -15,7 +15,25 @@
     }
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
-    .shell{max-width:1200px;margin:0 auto;padding:28px 28px 64px}
+    .layout{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh}
+    .sidenav{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;padding:18px 14px 28px;background:#12261e;color:#d6e4dc;border-right:1px solid #1e3a2e}
+    .sidenav .nav-brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:850;color:#8fd0ae;margin:0 0 6px}
+    .sidenav .nav-title{font-size:14px;font-weight:850;color:#fff;line-height:1.25;margin:0 0 14px}
+    .sidenav .nav-group{margin:14px 0 6px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:#7a9a8a}
+    .sidenav a{display:block;color:#c5d8cc;text-decoration:none;font-size:12.5px;line-height:1.35;padding:7px 10px;border-radius:8px;margin:2px 0;border-left:3px solid transparent}
+    .sidenav a:hover{background:#1a3328;color:#fff}
+    .sidenav a.active{background:#1f3d30;color:#fff;border-left-color:#3db878;font-weight:750}
+    .sidenav .lang{position:static;margin-top:16px;gap:6px;display:flex}
+    .sidenav .lang button{flex:1;background:#1a3328;border-color:#2a4a3c;color:#d6e4dc}
+    .sidenav .lang button.active{background:#fff;color:#12261e;border-color:#fff}
+    .shell{max-width:1080px;margin:0;padding:24px 28px 64px}
+    .block{margin-top:8px;padding-top:8px;scroll-margin-top:16px}
+    .block-label{display:inline-block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:#fff;background:var(--navy);border-radius:999px;padding:5px 10px;margin:18px 0 8px}
+    .block-label.fin{background:var(--red)}
+    .block-label.ops{background:var(--amber);color:#fff}
+    .block-label.sol{background:var(--green)}
+    .toc-hint{font-size:12px;color:var(--muted);margin:0 0 8px;max-width:70ch}
+
     header{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:18px}
     .eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:850;color:var(--green)}
     h1{font-size:clamp(30px,4.5vw,48px);line-height:1.02;letter-spacing:-.045em;margin:7px 0 10px;max-width:780px}
@@ -75,13 +93,60 @@
     [data-lang]{display:none !important}
     body.lang-en [data-lang="en"],body.lang-uk [data-lang="uk"]{display:revert !important}
     body.lang-en .decision-body[data-lang="en"],body.lang-uk .decision-body[data-lang="uk"]{display:block !important}
-    @media(max-width:900px){.kpis,.three{grid-template-columns:1fr 1fr}.two,.ask{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.ask-side{border-left:0;border-top:1px solid var(--line);padding:14px 0 0}}
+    @media(max-width:980px){.layout{grid-template-columns:1fr}.sidenav{position:relative;height:auto;max-height:none;border-right:0;border-bottom:1px solid #1e3a2e}.sidenav .nav-links{display:flex;flex-wrap:wrap;gap:4px}.sidenav a{flex:1 1 140px}.kpis,.three{grid-template-columns:1fr 1fr}.two,.ask{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.ask-side{border-left:0;border-top:1px solid var(--line);padding:14px 0 0}}
     @media(max-width:560px){.shell{padding:20px 15px 45px}header{display:block}.lang{margin-top:14px;position:static}.kpis,.three,.flow{grid-template-columns:1fr}.kpi{border-left:0;border-top:1px solid #49675a;padding:12px 0 0}.kpi:first-child{border-top:0}.section-head{display:block}.chart{height:240px}}
-    @media print{body{background:#fff}.shell{max-width:none;padding:12mm}.lang{display:none}.card,.ask,.hero,.table-wrap{break-inside:avoid}.section{break-inside:avoid;margin-top:20px}}
+    @media print{body{background:#fff}.sidenav{display:none}.layout{display:block}.shell{max-width:none;padding:12mm}.lang{display:none}.card,.ask,.hero,.table-wrap{break-inside:avoid}.section{break-inside:avoid;margin-top:20px}}
   </style>
 </head>
 <body class="lang-en">
-  <main class="shell">
+
+  <div class="layout">
+    <aside class="sidenav" aria-label="Report navigation">
+      <div class="nav-brand">Bolt Food · UA Stores</div>
+      <div class="nav-title" data-lang="en">Second payment business case</div>
+      <div class="nav-title" data-lang="uk">Бізнес-кейс другої транзакції</div>
+      <div class="nav-links">
+        <div class="nav-group" data-lang="en">Start here</div>
+        <div class="nav-group" data-lang="uk">Початок</div>
+        <a href="#summary" data-lang="en">1. Summary</a>
+        <a href="#summary" data-lang="uk">1. Summary</a>
+        <a href="#how-it-works" data-lang="en">2. How it works now → to-be</a>
+        <a href="#how-it-works" data-lang="uk">2. Як працює зараз → to-be</a>
+
+        <div class="nav-group" data-lang="en">Financial problem</div>
+        <div class="nav-group" data-lang="uk">Фінансова проблема</div>
+        <a href="#finance-now" data-lang="en">3. Impact now</a>
+        <a href="#finance-now" data-lang="uk">3. Імпакт зараз</a>
+        <a href="#finance-forward" data-lang="en">4. Impact next (ATB/Fora)</a>
+        <a href="#finance-forward" data-lang="uk">4. Імпакт далі (ATB/Fora)</a>
+        <a href="#finance-logic" data-lang="en">5. Gap &amp; lost SF</a>
+        <a href="#finance-logic" data-lang="uk">5. Gap і втрачений SF</a>
+        <a href="#finance-cp" data-lang="en">6. CP L1 Stores vs country</a>
+        <a href="#finance-cp" data-lang="uk">6. CP L1 Stores vs країна</a>
+
+        <div class="nav-group" data-lang="en">Ops &amp; partners</div>
+        <div class="nav-group" data-lang="uk">Ops і партнери</div>
+        <a href="#ops-pain" data-lang="en">7. Why ops is hard</a>
+        <a href="#ops-pain" data-lang="uk">7. Чому ops важко</a>
+        <a href="#ops-tools" data-lang="en">8. Limits &amp; tools fail</a>
+        <a href="#ops-tools" data-lang="uk">8. Ліміти і чому tools fail</a>
+        <a href="#ops-cs" data-lang="en">9. Customer complaints</a>
+        <a href="#ops-cs" data-lang="uk">9. Скарги клієнтів</a>
+
+        <div class="nav-group" data-lang="en">Decision</div>
+        <div class="nav-group" data-lang="uk">Рішення</div>
+        <a href="#ask" data-lang="en">10. Product ask</a>
+        <a href="#ask" data-lang="uk">10. Запит до Product</a>
+        <a href="#improve" data-lang="en">11. How MVP helps</a>
+        <a href="#improve" data-lang="uk">11. Як MVP допомагає</a>
+        <a href="#legal" data-lang="en">12. Legal</a>
+        <a href="#legal" data-lang="uk">12. Legal</a>
+        <a href="#measure" data-lang="en">13. Alternatives &amp; metrics</a>
+        <a href="#measure" data-lang="uk">13. Альтернативи і метрики</a>
+      </div>
+    </aside>
+    <main class="shell">
+
 <header>
       <div>
         <div class="eyebrow">Bolt Food · Ukraine Stores · Product business case</div>
@@ -96,7 +161,7 @@
       </div>
     </header>
 
-    <section class="hero">
+    <section class="hero block" id="summary">
       <div data-lang="en">
         <div class="eyebrow" style="color:#8fd0ae">Business case summary</div>
         <h2>Charge the final Stores basket after picking — not the pre-pick checkout amount.</h2>
@@ -115,7 +180,12 @@
       </div>
     </section>
 
-    <section class="section">
+    <div class="block" id="how-it-works">
+      <div class="block-label" data-lang="en">Block A · How it works</div>
+      <div class="block-label" data-lang="uk">Блок A · Як це працює</div>
+      <p class="toc-hint" data-lang="en">Read as-is vs to-be first — then the money and ops blocks.</p>
+      <p class="toc-hint" data-lang="uk">Спочатку as-is vs to-be — далі гроші та ops.</p>
+    <section class="section" id="asis">
       <div class="section-head">
         <div><div class="eyebrow">01 · As-is</div><h2 data-lang="en">How basket and payment work today</h2><h2 data-lang="uk">Як зараз працюють кошик і оплата</h2></div>
         <p data-lang="en">Eater is charged before picking. If the real basket becomes more expensive, the consumer is <strong>not</strong> topped up — Bolt covers the difference after the partner act.</p>
@@ -155,6 +225,13 @@
       </div>
     </section>
 
+    </div>
+
+    <div class="block" id="finance-now">
+      <div class="block-label fin" data-lang="en">Block B · Financial problem · now</div>
+      <div class="block-label fin" data-lang="uk">Блок B · Фінансова проблема · зараз</div>
+      <p class="toc-hint" data-lang="en">Bolt funds positive settlement gaps today. Thin Stores CP cannot absorb this as grocery scales.</p>
+      <p class="toc-hint" data-lang="uk">Bolt уже фінансує позитивні settlement gaps. Тонкий Stores CP не витримає, коли grocery масштабується.</p>
     <section class="section">
       <div class="section-head">
         <div><div class="eyebrow">Part B · Current situation</div><h2 data-lang="en">Why this is already painful — and gets worse with growth</h2><h2 data-lang="uk">Чому вже болить — і з ростом стане гірше</h2></div>
@@ -165,7 +242,7 @@
 
 <section class="section">
       <div class="section-head">
-        <div><div class="eyebrow">03 · Evidence</div><h2 data-lang="en">The cash-out is already material</h2><h2 data-lang="uk">Cash-out уже матеріальний</h2></div>
+        <div><div class="eyebrow">03 · Evidence · money now</div><h2 data-lang="en">The cash-out is already material</h2><h2 data-lang="uk">Cash-out уже матеріальний</h2></div>
         <p data-lang="en">Gross payout means positive partner-vs-Bolt differences only. Negative LOKO adjustments do not offset cash actually paid to other partners.</p>
         <p data-lang="uk">Валова виплата — лише позитивна різниця partner-vs-Bolt. Негативні коригування LOKO не зменшують cash, фактично виплачений іншим партнерам.</p>
       </div>
@@ -202,7 +279,14 @@
       <div class="caption" data-lang="en">Rate = gross positive payout / Bolt GMV for available Jan–Jun 2026 partner-months. VARUS has two observed months, so its rate should be treated as directional.</div>
       <div class="caption" data-lang="uk">Rate = валова позитивна виплата / Bolt GMV за доступні partner-months у Jan–Jun 2026. Для VARUS є лише два місяці, тому rate є directional.</div>
     </section>
-<section class="section">
+</div>
+
+    <div class="block" id="finance-forward">
+      <div class="block-label fin" data-lang="en">Block C · Financial problem · next</div>
+      <div class="block-label fin" data-lang="uk">Блок C · Фінансова проблема · далі</div>
+      <p class="toc-hint" data-lang="en">Optimistic growth + ATB/Fora push Stores payout rate toward ~2.19% by Mar 2027.</p>
+      <p class="toc-hint" data-lang="uk">Optimistic ріст + ATB/Fora піднімають Stores payout rate до ~2.19% у Mar 2027.</p>
+<section class="section" id="forecast">
       <div class="section-head"><div><div class="eyebrow">05 · Forecast</div><h2 data-lang="en">Optimistic growth turns leakage into a €186k exposure</h2><h2 data-lang="uk">Оптимістичний ріст перетворює leakage на ризик €186k</h2></div></div>
       <div class="grid two">
         <div class="card"><h3 data-lang="en">Projected payout by month</h3><h3 data-lang="uk">Прогноз виплат за місяць</h3><div class="chart"><canvas id="forecastChart"></canvas></div><div class="caption" data-lang="en">X-axis: Oct 2026–Mar 2027 · Y-axis: EUR thousands. Optimistic Stores forecast, mix-adjusted partner payout rates.</div><div class="caption" data-lang="uk">Вісь X: Oct 2026–Mar 2027 · вісь Y: тис. EUR. Optimistic Stores forecast, mix-adjusted partner payout rates.</div></div>
@@ -223,6 +307,11 @@
         </table>
       </div>
     </section>
+</div>
+
+    <div class="block" id="finance-logic">
+      <div class="block-label fin" data-lang="en">Block D · Why the money leaks (SF)</div>
+      <div class="block-label fin" data-lang="uk">Блок D · Чому течуть гроші (SF)</div>
 <section class="section">
       <div class="section-head"><div><div class="eyebrow">06 · Logic</div><h2 data-lang="en">Gap = lost DF money via Service Fee (SF), not “broken commission”</h2><h2 data-lang="uk">Gap = втрачені гроші DF через Service Fee (SF), не «зламана комісія»</h2></div></div>
       <div class="card">
@@ -271,6 +360,11 @@
         <p data-lang="uk" style="margin-top:10px;color:var(--ink)"><strong>Приклад:</strong> X = €100, Y = €105, SF 5.2% → settlement gap €5 <em>і</em> втрачений SF €0.26 на дельті. З другою транзакцією eater платить €105 → SF з повного кошика, gap €0. <strong>Не читайте gap як «комісія неправильна»</strong> — комісія з актів уже на Y. Промах DF — це SF (плюс cash settlement Y−X).</p>
       </div>
     </section>
+</div>
+
+    <div class="block" id="finance-cp">
+      <div class="block-label fin" data-lang="en">Block E · CP L1 &amp; P&amp;L impact</div>
+      <div class="block-label fin" data-lang="uk">Блок E · CP L1 і P&amp;L імпакт</div>
 <section class="section">
       <div class="section-head"><div><div class="eyebrow">07 · CP L1 now</div><h2 data-lang="en">Current CP L1 · Stores vs country (Stores + Restaurants)</h2><h2 data-lang="uk">Поточний CP L1 · Stores vs країна (Stores + Restaurants)</h2></div>
         <p data-lang="en">Last two full months: June and July 2026.</p>
@@ -341,7 +435,68 @@
         <p data-lang="uk">Optimistic GMV росте до €8.26m, але Stores commission % падає до ~9.3%, а CP L1 лишається тонким (~2%). Оскільки комісія сидить на актах (Y), а eater платить X, кожен непокритий gap зменшує нетто-комісію один-до-одного. Без другої транзакції ATB/Fora збільшують абсолютний gap і далі розводять CP L1 %, навіть якщо top-line продажі виглядають сильними. Country Food CP виглядає нормально лише тому, що його тягнуть ресторани.</p>
       </div>
     </section>
-<section class="section">
+</div>
+
+    <div class="block" id="ops-pain">
+      <div class="block-label ops" data-lang="en">Block F · Operational pain</div>
+      <div class="block-label ops" data-lang="uk">Блок F · Операційний біль</div>
+      <p class="toc-hint" data-lang="en">Not only money — Retail, Finance and stores burn time every month explaining gaps and working under pick limits.</p>
+      <p class="toc-hint" data-lang="uk">Не лише гроші — Retail, Finance і магазини щомісяця палять час на звірки та роботу під лімітами picking.</p>
+
+    <section class="section" id="ops-pain-detail">
+      <div class="section-head">
+        <div><div class="eyebrow">09a · Ops reality</div>
+          <h2 data-lang="en">Hard for Bolt teams and for stores</h2>
+          <h2 data-lang="uk">Важко і командам Bolt, і магазинам</h2>
+        </div>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3 data-lang="en">Retail + Finance · constant reconciliation</h3>
+          <h3 data-lang="uk">Retail + Finance · постійні звірки</h3>
+          <ul data-lang="en">
+            <li>Every month the <strong>Retail</strong> and <strong>Finance</strong> teams are pulled into partner-vs-Bolt act / invoice diffs.</li>
+            <li>Each euro of gap must be lined up to a reason: replacement, weight, packaging, price mismatch, system lag.</li>
+            <li>Local ops already spends <strong>&gt;5 hours/month</strong> only on reconciliation — and that load grows with ATB/Fora volume.</li>
+            <li>This is not a one-off cleanup: it is a standing process tax on the whole Stores org.</li>
+          </ul>
+          <ul data-lang="uk">
+            <li>Щомісяця <strong>Retail</strong> і <strong>Finance</strong> втягнуті в різниці актів / інвойсів partner-vs-Bolt.</li>
+            <li>Кожен євро gap треба вишикувати до причини: заміна, вага, пакування, price mismatch, system lag.</li>
+            <li>Локальний ops уже витрачає <strong>&gt;5 год/міс</strong> лише на звірку — і навантаження зросте з ATB/Fora.</li>
+            <li>Це не разова чистка: це постійний process tax на всю Stores-організацію.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 data-lang="en">Stores &amp; pickers · limits that do not scale</h3>
+          <h3 data-lang="uk">Магазини і пікери · ліміти, які не масштабуються</h3>
+          <ul data-lang="en">
+            <li>Per-item price caps / overbooking rules make day-to-day picking <strong>operationally hard</strong> for partners.</li>
+            <li>Pickers in stores <strong>rotate constantly</strong> — you cannot retrain everyone on Bolt’s edge-case rules each week.</li>
+            <li>When a slightly pricier but correct substitute is blocked, the item is removed → missing-item tickets → more CS and more gaps elsewhere.</li>
+            <li>Partners experience Bolt as rigid vs market practice (final charge after pick), which hurts relationship quality as volume grows.</li>
+          </ul>
+          <ul data-lang="uk">
+            <li>Per-item price caps / overbooking роблять щоденний picking <strong>операційно важким</strong> для партнерів.</li>
+            <li>Пікери в магазині <strong>постійно міняються</strong> — усім щотижня не поясниш edge-case правила Bolt.</li>
+            <li>Коли блокують трохи дорожчу, але правильну заміну — товар прибирають → missing-item тікети → більше CS і gaps.</li>
+            <li>Партнери бачать Bolt як жорсткий vs market practice (фінальне списання після збірки) — це б’є по стосунках при рості обсягів.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="decision risk" style="margin-top:14px">
+        <div class="decision-body" data-lang="en">
+          <strong>Financial leak + ops tax = the same root cause</strong>
+          <p>Fixed pre-pick charge forces Bolt to fund Y−X <em>and</em> forces humans (Retail, Finance, store pickers) to paper over every exception. Second payment removes both the cash hole and the need to micromanage substitutions under brittle limits.</p>
+        </div>
+        <div class="decision-body" data-lang="uk">
+          <strong>Фінансова дірка + ops-податок = одна коренева причина</strong>
+          <p>Фіксоване списання до збірки змушує Bolt фінансувати Y−X <em>і</em> людей (Retail, Finance, пікерів) латати кожен exception. Друга транзакція прибирає і грошову дірку, і потребу мікроменеджити заміни під крихкими лімітами.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="section" id="ops-cs">
       <div class="section-head"><div><div class="eyebrow">09 · Customer impact</div><h2 data-lang="en">Missing / wrong-item complaints · VARUS &amp; Kopiyka</h2><h2 data-lang="uk">Скарги missing / wrong item · VARUS і Копійка</h2></div></div>
       <div class="table-wrap">
         <table>
@@ -360,7 +515,7 @@
         <p data-lang="uk">Коли picker не може запропонувати трохи дорожчу, але релевантну заміну, товар прибирають. Eater скаржиться на missing / wrong product, CS відкриває тікет, а Bolt далі фінансує settlement gaps на вазі / пакуванні / дозволених замінах. Друга транзакція дозволяє нормальні заміни без оплати дельти з кишені Bolt.</p>
       </div>
     </section>
-<section class="section">
+<section class="section" id="atb-fora">
       <div class="section-head"><div><div class="eyebrow">10 · New launches</div><h2 data-lang="en">ATB and Fora make the issue urgent</h2><h2 data-lang="uk">ATB і Fora роблять проблему терміновою</h2></div></div>
       <div class="table-wrap">
         <table>
@@ -388,7 +543,7 @@
         </div>
       </div>
     </section>
-<section class="section">
+<section class="section" id="ops-tools">
       <div class="section-head"><div><div class="eyebrow">11 · Why current tools fail</div><h2 data-lang="en">The trade-off is currently margin vs UX</h2><h2 data-lang="uk">Зараз доводиться обирати між margin та UX</h2></div></div>
       <div class="grid three">
         <div class="card"><h3 data-lang="en">Overbooking is incomplete</h3><h3 data-lang="uk">Overbooking не покриває все</h3><ul data-lang="en"><li>20% for weighted goods still misses real deltas.</li><li>Packaging is a fixed reserve, not an actual final charge.</li><li>A bag cannot be attached automatically to every weighted SKU.</li><li>Unused reserve must be returned.</li></ul><ul data-lang="uk"><li>20% для вагових товарів не покриває реальні deltas.</li><li>Пакування — fixed reserve, а не фактичне фінальне списання.</li><li>Пакет не можна автоматично додати до кожного вагового SKU.</li><li>Невикористаний reserve треба повертати.</li></ul></div>
@@ -414,13 +569,18 @@
       </div>
     </section>
 
+    </div>
+
+    <div class="block" id="ask">
+      <div class="block-label sol" data-lang="en">Block G · What to do</div>
+      <div class="block-label sol" data-lang="uk">Блок G · Що робити</div>
     <section class="section">
       <div class="section-head">
         <div><div class="eyebrow">Part C · What to do</div><h2 data-lang="en">Ask, Legal guardrails, and how the MVP improves the situation</h2><h2 data-lang="uk">Запит, Legal-рамки і як MVP поліпшить ситуацію</h2></div>
       </div>
     </section>
 
-<section class="ask">
+<section class="ask" id="product-ask">
       <div>
         <div class="eyebrow" data-lang="en">12 · Product ask</div><div class="eyebrow" data-lang="uk">12 · Запит до Product</div>
         <h2 data-lang="en">Prioritize a Ukraine MVP for hold → release → final charge</h2>
@@ -447,7 +607,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="improve">
       <div class="section-head"><div><div class="eyebrow">13 · Impact of the change</div><h2 data-lang="en">How the recommended flow improves the situation</h2><h2 data-lang="uk">Як рекомендований flow поліпшить ситуацію</h2></div></div>
       <div class="grid three">
         <div class="card">
@@ -477,22 +637,22 @@
           </ul>
         </div>
         <div class="card">
-          <h3 data-lang="en">Ops &amp; scale</h3><h3 data-lang="uk">Ops і масштаб</h3>
+          <h3 data-lang="en">Ops &amp; partners</h3><h3 data-lang="uk">Ops і партнери</h3>
           <ul data-lang="en">
-            <li>Less manual reconciliation of partner acts vs Bolt checkout.</li>
-            <li>Ready for ATB / Fora volume without scaling leakage 1:1 with GMV.</li>
-            <li>Aligns Food Stores with Bolt ride-hailing final-charge logic under clear disclosure.</li>
+            <li>Less monthly reconciliation for Retail + Finance on every gap reason.</li>
+            <li>Stores can pick with fewer brittle per-item limits — workable even when pickers rotate.</li>
+            <li>Aligns with market practice and ride-hailing final-charge logic under clear disclosure.</li>
           </ul>
           <ul data-lang="uk">
-            <li>Менше ручної звірки актів партнера vs Bolt checkout.</li>
-            <li>Готовність до обсягів ATB / Fora без масштабування leakage 1:1 з GMV.</li>
-            <li>Вирівнює Food Stores з логікою фінального списання Bolt ride-hailing при чіткому disclosure.</li>
+            <li>Менше щомісячних звірок Retail + Finance по кожній причині gap.</li>
+            <li>Магазинам легше збирати з меншою кількістю крихких per-item лімітів — навіть коли пікери міняються.</li>
+            <li>Вирівнює з market practice і логікою фінального списання rides при чіткому disclosure.</li>
           </ul>
         </div>
       </div>
     </section>
 
-<section class="section">
+<section class="section" id="legal">
       <div class="section-head">
         <div><div class="eyebrow">14 · Legal (LSS-64024)</div><h2 data-lang="en">Legal conclusions from the overbooking / second-charge review</h2><h2 data-lang="uk">Висновки Legal з рев’ю overbooking / second charge</h2></div>
         <p data-lang="en">Source: Liisa (Legal) on LSS-64024, Mar 2026 — after comparing Glovo UA/PL/GH/PT user terms and EU consumer-law practice.</p>
@@ -556,7 +716,7 @@
         <p data-lang="uk">Не запускати silent second charge як у Glovo. Запустити <strong>rides-style</strong> модель: hold → показати фінальний кошик (item-level) → consent де потрібно → release → charge. Це знімає внутрішній подвійний стандарт, повторює вже живий payment-патерн Bolt і є design, який Legal може оцінити для України як non-EU пілота.</p>
       </div>
     </section>
-<section class="section">
+<section class="section" id="measure">
       <div class="section-head"><div><div class="eyebrow">15 · Decision framework</div><h2 data-lang="en">Alternatives do not solve both economics and UX</h2><h2 data-lang="uk">Альтернативи не вирішують одночасно economics та UX</h2></div></div>
       <div class="table-wrap">
         <table>
@@ -607,6 +767,7 @@
       <div class="source" style="text-align:right">Prepared by Yuliia Nikolaieva<br>21 Aug 2026 · Internal business case</div>
     </footer>
   </main>
+  </div>
 
   <script>
     const monthsActual = ['Jan','Feb','Mar','Apr','May','Jun'];
@@ -627,6 +788,18 @@
       localStorage.setItem('businessCaseLanguage',lang);
     }
     setLanguage(localStorage.getItem('businessCaseLanguage') || 'en');
+
+    const navLinks = [...document.querySelectorAll('.sidenav a[href^="#"]')];
+    const targets = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    function setActive(){
+      let cur = targets[0];
+      for (const t of targets){
+        if (t.getBoundingClientRect().top <= 120) cur = t;
+      }
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+(cur && cur.id)));
+    }
+    window.addEventListener('scroll', setActive, {passive:true});
+    setActive();
   </script>
 </body>
 </html>
