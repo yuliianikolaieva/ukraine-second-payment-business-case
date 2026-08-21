@@ -1,7 +1,7 @@
 # Ukraine Stores — Second Payment Business Case
 
-**GitHub:** https://github.com/yuliianikolaieva/ukraine-second-payment-business-case  
-**Report file:** https://github.com/yuliianikolaieva/ukraine-second-payment-business-case/blob/main/index.html
+**Open report:** https://yuliianikolaieva.github.io/ukraine-second-payment-business-case/  
+**GitHub:** https://github.com/yuliianikolaieva/ukraine-second-payment-business-case
 
 Bilingual English/Ukrainian business case for charging the final basket amount after picking.
 
