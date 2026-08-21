@@ -107,7 +107,7 @@
       <div class="grid kpis">
         <div class="kpi"><div class="k-label" data-lang="en">Observed gross payout</div><div class="k-label" data-lang="uk">Фактичні валові виплати</div><div class="k-value">€19.4k</div><div class="k-note">Jan–Jun 2026 · FX 50.89</div></div>
         <div class="kpi"><div class="k-label" data-lang="en">Forecast payout</div><div class="k-label" data-lang="uk">Прогноз виплат</div><div class="k-value">€185.8k</div><div class="k-note">Oct 2026–Mar 2027</div></div>
-        <div class="kpi"><div class="k-label" data-lang="en">Commission consumed</div><div class="k-label" data-lang="uk">Комісії з’їдається</div><div class="k-value">24.2%</div><div class="k-note" data-lang="en">payout ÷ commission</div><div class="k-note" data-lang="uk">виплати ÷ комісія</div></div>
+        <div class="kpi"><div class="k-label" data-lang="en">Gap vs commission</div><div class="k-label" data-lang="uk">Gap vs комісія</div><div class="k-value">24.2%</div><div class="k-note" data-lang="en">forecast gap ÷ commission on acts</div><div class="k-note" data-lang="uk">прогнозний gap ÷ комісія з актів</div></div>
         <div class="kpi"><div class="k-label" data-lang="en">Peak monthly payout</div><div class="k-label" data-lang="uk">Пікова місячна виплата</div><div class="k-value">€41.2k</div><div class="k-note">Mar 2027</div></div>
       </div>
     </section>
@@ -196,48 +196,97 @@
     </section>
 
     <section class="section">
-      <div class="section-head"><div><div class="eyebrow">03b · Logic</div><h2 data-lang="en">Why 24.2% of commission is “eaten”</h2><h2 data-lang="uk">Чому “з’їдається” 24.2% комісії</h2></div></div>
+      <div class="section-head"><div><div class="eyebrow">03b · Logic</div><h2 data-lang="en">How the gap works if commission is on partner acts</h2><h2 data-lang="uk">Як працює gap, якщо комісія з актів партнера</h2></div></div>
       <div class="card">
+        <p data-lang="en" style="margin-bottom:10px;color:var(--ink)"><strong>Correct settlement math (your point):</strong> commission is accrued on the partner act amount (Y), not on the lower amount the eater was charged at checkout (X).</p>
+        <p data-lang="uk" style="margin-bottom:10px;color:var(--ink)"><strong>Правильна математика settlement (ваш поінт):</strong> комісія нараховується від суми актів партнера (Y), а не від нижчої суми, яку eater сплатив на checkout (X).</p>
         <ul data-lang="en">
-          <li><strong>Formula:</strong> Commission consumed = projected Bolt-funded payout ÷ Stores commission revenue.</li>
-          <li><strong>Example for the forecast window:</strong> €185.8k payout / €767.9k commission = <strong>24.2%</strong>.</li>
-          <li>This is not “all of Ukraine Food”. It is the share of <em>Stores commission</em> that disappears before courier, payment fees, incentives, CS and other operating costs.</li>
-          <li>So if commission is €100, €24 already leaves as settlement cash-out and only €76 remains to cover the rest of the P&amp;L stack.</li>
-          <li>On Jan–Jun 2026 actuals the same logic was smaller in % (€19.4k / €240.5k commission ≈ 8.1%), but absolute cash-out and mix risk rise sharply as ATB / Fora / grocery scale.</li>
+          <li><strong>X</strong> = amount charged to the eater (Bolt checkout / hold).</li>
+          <li><strong>Y</strong> = partner act GMV after picking (replacements, weight, packaging).</li>
+          <li><strong>Commission</strong> ≈ rate × <strong>Y</strong> (from partner acts).</li>
+          <li><strong>Gap</strong> = Y − X = cash Bolt still funds because the customer was not recharged.</li>
+          <li><strong>Net kept from this layer</strong> ≈ Commission(Y) − Gap(Y−X).</li>
+          <li><strong>Example:</strong> X = €100, Y = €105, commission 10% → commission = €10.50, gap = €5, net ≈ €5.50. Without the gap, Bolt would keep the full €10.50 before other costs.</li>
+          <li><strong>What 24.2% means:</strong> forecast Gap €185.8k ÷ forecast Commission €767.9k. It is <em>not</em> “24% of all Food Ukraine”. It means the gap offsets about one quarter of Stores commission euros in the optimistic window.</li>
+          <li>On Jan–Jun 2026 actuals the same ratio was ≈ €19.4k / €240.5k = <strong>8.1%</strong>. It rises in the forecast because grocery mix (VARUS / ATB / Fora) grows while commission % falls.</li>
         </ul>
         <ul data-lang="uk">
-          <li><strong>Формула:</strong> Комісії з’їдається = прогнозні Bolt-funded виплати ÷ комісійний дохід Stores.</li>
-          <li><strong>Приклад на прогнозному вікні:</strong> €185.8k виплат / €767.9k комісії = <strong>24.2%</strong>.</li>
-          <li>Це не “весь Food України”. Це частка саме <em>комісії Stores</em>, яка зникає ще до courier, payment fees, incentives, CS та інших operating costs.</li>
-          <li>Тобто з €100 комісії €24 уже йде як settlement cash-out, і лише €76 лишається на решту P&amp;L-стеку.</li>
-          <li>На фактах Jan–Jun 2026 ця частка була меншою (€19.4k / €240.5k комісії ≈ 8.1%), але абсолютний cash-out і mix-ризик різко ростуть із масштабом ATB / Fora / grocery.</li>
+          <li><strong>X</strong> = сума, списана з eater (Bolt checkout / hold).</li>
+          <li><strong>Y</strong> = GMV за актами партнера після збірки (заміни, вага, пакування).</li>
+          <li><strong>Комісія</strong> ≈ ставка × <strong>Y</strong> (з актів партнера).</li>
+          <li><strong>Gap</strong> = Y − X = cash, який досі фінансує Bolt, бо клієнта повторно не списали.</li>
+          <li><strong>Нетто з цього шару</strong> ≈ Комісія(Y) − Gap(Y−X).</li>
+          <li><strong>Приклад:</strong> X = €100, Y = €105, комісія 10% → комісія = €10.50, gap = €5, нетто ≈ €5.50. Без gap Bolt залишив би повні €10.50 до інших витрат.</li>
+          <li><strong>Що означає 24.2%:</strong> прогнозний Gap €185.8k ÷ прогнозна Комісія €767.9k. Це <em>не</em> “24% усього Food України”. Це означає, що gap з’їдає близько чверті євро комісії Stores в optimistic вікні.</li>
+          <li>На факті Jan–Jun 2026 той самий ratio ≈ €19.4k / €240.5k = <strong>8.1%</strong>. У прогнозі він росте, бо grocery mix (VARUS / ATB / Fora) збільшується, а commission % падає.</li>
         </ul>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-head"><div><div class="eyebrow">03c · P&amp;L</div><h2 data-lang="en">Impact on Bolt Food Ukraine P&amp;L</h2><h2 data-lang="uk">Вплив на P&amp;L Bolt Food Ukraine</h2></div></div>
+      <div class="section-head"><div><div class="eyebrow">03b2 · CP L1 now</div><h2 data-lang="en">Current CP L1 · Stores vs country (Stores + Restaurants)</h2><h2 data-lang="uk">Поточний CP L1 · Stores vs країна (Stores + Restaurants)</h2></div></div>
+      <div class="grid two">
+        <div class="card">
+          <h3 data-lang="en">Latest full week · 10–16 Aug 2026</h3><h3 data-lang="uk">Останній повний тиждень · 10–16 Aug 2026</h3>
+          <div class="table-wrap" style="margin-top:10px">
+            <table>
+              <thead><tr><th data-lang="en">Scope</th><th data-lang="uk">Скоуп</th><th>GMV</th><th data-lang="en">Commission</th><th data-lang="uk">Комісія</th><th>CP L1</th><th>CP L1 %</th></tr></thead>
+              <tbody>
+                <tr><td>Stores</td><td>€171k</td><td>10.76%</td><td class="bad">€3.8k</td><td class="bad">2.22%</td></tr>
+                <tr><td>Restaurants</td><td>€2.66m</td><td>18.18%</td><td class="good">€295k</td><td class="good">11.10%</td></tr>
+                <tr><td data-lang="en">Ukraine Food total</td><td data-lang="uk">Україна Food разом</td><td>€2.83m</td><td>17.73%</td><td>€299k</td><td>10.56%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h3 data-lang="en">July 2026 month</h3><h3 data-lang="uk">Липень 2026</h3>
+          <div class="table-wrap" style="margin-top:10px">
+            <table>
+              <thead><tr><th data-lang="en">Scope</th><th data-lang="uk">Скоуп</th><th>GMV</th><th data-lang="en">Commission</th><th data-lang="uk">Комісія</th><th>CP L1</th><th>CP L1 %</th></tr></thead>
+              <tbody>
+                <tr><td>Stores</td><td>€513k</td><td>11.61%</td><td class="good">€13.7k</td><td>2.66%</td></tr>
+                <tr><td>Restaurants</td><td>€8.83m</td><td>18.53%</td><td class="good">€981k</td><td class="good">11.11%</td></tr>
+                <tr><td data-lang="en">Ukraine Food total</td><td data-lang="uk">Україна Food разом</td><td>€9.34m</td><td>18.15%</td><td>€995k</td><td>10.65%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="caption" data-lang="en">Source: Databricks fact_provider_weekly / fact_provider_monthly · CP L1 = total_contribution_profit_eur / total_gmv_before_discounts_eur. Stores = store_3p% (+ ANRI-PHARM, BRSM, VAPORS, PIVASOV). Country = Stores + Restaurants.</div>
+      <div class="caption" data-lang="uk">Джерело: Databricks fact_provider_weekly / fact_provider_monthly · CP L1 = total_contribution_profit_eur / total_gmv_before_discounts_eur. Stores = store_3p% (+ ANRI-PHARM, BRSM, VAPORS, PIVASOV). Країна = Stores + Restaurants.</div>
+      <div class="decision warn">
+        <strong data-lang="en">Stores CP L1 is thin: 2.2–2.7% vs ~11% for restaurants</strong><strong data-lang="uk">Stores CP L1 тонкий: 2.2–2.7% проти ~11% у ресторанів</strong>
+        <p data-lang="en">On the latest week, a settlement gap run-rate of ~€0.8k/week already equals ~21% of Stores CP L1 (€3.8k). On Jul, a May/Jun-like monthly gap of €4–6k would take 30–45% of the €13.7k Stores CP L1. Country Food still looks healthy because restaurants dominate GMV and CP.</p>
+        <p data-lang="uk">На останньому тижні settlement gap ~€0.8k/тиждень уже становить ~21% від Stores CP L1 (€3.8k). У липні місячний gap рівня May/Jun €4–6k забрав би 30–45% від €13.7k Stores CP L1. Country Food виглядає здоровим, бо ресторани домінують у GMV і CP.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">03c · P&amp;L impact</div><h2 data-lang="en">Impact on margin, sales and commission · now vs next</h2><h2 data-lang="uk">Імпакт на маржу, продажі та комісію · зараз і далі</h2></div></div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th data-lang="en">P&amp;L line</th><th data-lang="uk">Стаття P&amp;L</th><th data-lang="en">Jan–Jun 2026 actual</th><th data-lang="uk">Факт Jan–Jun 2026</th><th data-lang="en">Oct 2026–Mar 2027 forecast</th><th data-lang="uk">Прогноз Oct 2026–Mar 2027</th><th data-lang="en">What happens without a fix</th><th data-lang="uk">Що буде без фіксу</th></tr></thead>
+          <thead><tr><th data-lang="en">Metric</th><th data-lang="uk">Метрика</th><th data-lang="en">Now (Jul / last week)</th><th data-lang="uk">Зараз (Jul / останній тиждень)</th><th data-lang="en">Jan–Jun 2026</th><th data-lang="uk">Jan–Jun 2026</th><th data-lang="en">Oct 2026–Mar 2027 optimistic</th><th data-lang="uk">Oct 2026–Mar 2027 optimistic</th></tr></thead>
           <tbody>
-            <tr><td data-lang="en">Stores GMV</td><td data-lang="uk">Stores GMV</td><td>€1.79m</td><td>€8.26m</td><td data-lang="en">Grows with ATB / Fora</td><td data-lang="uk">Росте з ATB / Fora</td></tr>
-            <tr><td data-lang="en">Commission revenue</td><td data-lang="uk">Комісійний дохід</td><td>€240.5k</td><td>€767.9k</td><td data-lang="en">Take-rate falls toward ~9.2%</td><td data-lang="uk">Take-rate падає до ~9.2%</td></tr>
-            <tr><td data-lang="en">Bolt-funded settlement payout</td><td data-lang="uk">Bolt-funded settlement виплати</td><td class="bad">−€19.4k</td><td class="bad">−€185.8k</td><td class="bad" data-lang="en">Direct CM drag</td><td class="bad" data-lang="uk">Прямий удар по CM</td></tr>
-            <tr><td data-lang="en">Commission after settlement leakage</td><td data-lang="uk">Комісія після leakage</td><td>€221.1k</td><td>€582.1k</td><td data-lang="en">24.2% already gone</td><td data-lang="uk">24.2% уже втрачено</td></tr>
-            <tr><td data-lang="en">Still unpaid from that remainder</td><td data-lang="uk">З решти ще треба покрити</td><td data-lang="en">Courier, fees, incentives, CS</td><td data-lang="uk">Courier, fees, incentives, CS</td><td data-lang="en">Same stack, larger scale</td><td data-lang="uk">Той самий стек, більший масштаб</td></tr>
-            <tr><td data-lang="en">Ops reconciliation time</td><td data-lang="uk">Час ops на звірку</td><td>>5 h / month</td><td>>5 h / month</td><td data-lang="en">Grows with partners &amp; docs</td><td data-lang="uk">Росте з партнерами і docs</td></tr>
+            <tr><td data-lang="en">Stores GMV / sales</td><td data-lang="uk">Stores GMV / продажі</td><td>€513k / wk €171k</td><td>€1.79m</td><td>€8.26m</td></tr>
+            <tr><td data-lang="en">Stores commission %</td><td data-lang="uk">Stores commission %</td><td>11.61% / 10.76%</td><td>~13.5% avg</td><td class="bad">~9.3%</td></tr>
+            <tr><td data-lang="en">Stores commission €</td><td data-lang="uk">Stores комісія €</td><td>€59.6k / wk €18.4k</td><td>€240.5k</td><td>€767.9k</td></tr>
+            <tr><td data-lang="en">Stores CP L1</td><td data-lang="uk">Stores CP L1</td><td class="bad">€13.7k / 2.66% · wk €3.8k / 2.22%</td><td class="bad">−€56.9k / −3.2%</td><td>~€220k if Jul CP% holds, before gap</td></tr>
+            <tr><td data-lang="en">Settlement gap (acts − checkout)</td><td data-lang="uk">Settlement gap (акти − checkout)</td><td>~€3–6k / mo</td><td class="bad">€19.4k</td><td class="bad">€185.8k</td></tr>
+            <tr><td data-lang="en">Gap ÷ Stores commission</td><td data-lang="uk">Gap ÷ комісія Stores</td><td>~5–10%</td><td>8.1%</td><td class="bad">24.2%</td></tr>
+            <tr><td data-lang="en">Gap ÷ Stores CP L1</td><td data-lang="uk">Gap ÷ Stores CP L1</td><td class="bad">~21% of last-week CP</td><td class="bad">&gt;100% (CP was negative)</td><td class="bad">can erase most of thin Stores CP</td></tr>
+            <tr><td data-lang="en">Ukraine Food CP L1 (Stores+Restaurants)</td><td data-lang="uk">CP L1 країни (Stores+Restaurants)</td><td>€995k / 10.65% · wk €299k / 10.56%</td><td>~€4.0m / ~8.3%</td><td>restaurant-led; Stores drag grows</td></tr>
           </tbody>
         </table>
       </div>
       <div class="decision risk">
-        <strong data-lang="en">Profitability worsens even if GMV grows</strong><strong data-lang="uk">Прибутковість погіршується навіть при рості GMV</strong>
-        <p data-lang="en">Enterprise grocery launches increase GMV but compress commission %. Settlement leakage stays a cash cost paid by Bolt. Without second payment, contribution margin per euro of GMV deteriorates as the mix shifts to ATB / Fora / VARUS-style grocery.</p>
-        <p data-lang="uk">Запуски enterprise grocery збільшують GMV, але стискають commission %. Settlement leakage лишається cash-витратою Bolt. Без другої транзакції contribution margin на євро GMV погіршується, коли mix зміщується до ATB / Fora / VARUS-grocery.</p>
+        <strong data-lang="en">Sales can grow while Stores margin stays fragile</strong><strong data-lang="uk">Продажі можуть рости, а Stores margin лишається крихким</strong>
+        <p data-lang="en">Optimistic GMV scales to €8.26m, but Stores commission % falls toward ~9.3% and CP L1 stays thin (~2%). Because commission sits on partner acts (Y) while the eater pays X, every uncovered gap reduces net commission one-for-one. Without second payment, ATB/Fora increase absolute gaps and further dilute CP L1 % even if top-line sales look strong. Country Food CP still looks fine only because restaurants carry it.</p>
+        <p data-lang="uk">Optimistic GMV росте до €8.26m, але Stores commission % падає до ~9.3%, а CP L1 лишається тонким (~2%). Оскільки комісія сидить на актах (Y), а eater платить X, кожен непокритий gap зменшує нетто-комісію один-до-одного. Без другої транзакції ATB/Fora збільшують абсолютний gap і далі розводять CP L1 %, навіть якщо top-line продажі виглядають сильними. Country Food CP виглядає нормально лише тому, що його тягнуть ресторани.</p>
       </div>
     </section>
 
-    <section class="section">
+<section class="section">
       <div class="section-head"><div><div class="eyebrow">03d · Customer impact</div><h2 data-lang="en">Missing / wrong-item complaints · VARUS &amp; Kopiyka</h2><h2 data-lang="uk">Скарги missing / wrong item · VARUS і Копійка</h2></div></div>
       <div class="table-wrap">
         <table>
@@ -335,14 +384,14 @@
         <li>Actual payout is the positive partner GMV minus Bolt GMV difference in the refund workbook. It combines substitutions, weight, packaging and other changes not reflected in the system; the file does not split these drivers.</li>
         <li>The base forecast applies each existing partner’s historical gross payout rate. ATB and Fora use the pooled grocery benchmark of 2.70%. All other forecast partners use the country benchmark of 1.08%.</li>
         <li>Forecast uses the optimistic Oct 2026–Mar 2027 scenario. Actual UAH payouts and partner tables are converted at 50.89 UAH/EUR from the forecast assumptions.</li>
-        <li>“Commission consumed” is payout / commission revenue, not full contribution margin. Shopper, support, incentives, payment fees and other costs are excluded.</li>
+        <li>Commission is treated as accruing on partner act GMV (Y). Gap = act GMV − checkout charge. Net ≈ commission(Y) − gap. “24.2%” = forecast gap ÷ forecast commission, not full CP L1.</li>
         <li>Second payment will not recover 100% in every case: failed charges, payment-method constraints and customer protection rules require a fallback design.</li>
       </ul>
       <ul data-lang="uk">
         <li>Фактична виплата — позитивна різниця partner GMV мінус Bolt GMV у refund workbook. Вона об’єднує заміни, вагу, пакування та інші зміни, не відображені в системі; файл не розділяє ці драйвери.</li>
         <li>Base forecast застосовує історичний gross payout rate для чинних партнерів. Для ATB і Fora використано pooled grocery benchmark 2.70%. Для решти партнерів — country benchmark 1.08%.</li>
         <li>Прогноз використовує optimistic scenario Oct 2026–Mar 2027. Фактичні UAH-виплати та partner-таблиці конвертовано за 50.89 UAH/EUR з assumptions forecast.</li>
-        <li>“Commission consumed” = payout / commission revenue, а не повна contribution margin. Shopper, support, incentives, payment fees та інші витрати не включено.</li>
+        <li>Комісія вважається нарахованою від GMV актів партнера (Y). Gap = GMV акта − checkout. Нетто ≈ комісія(Y) − gap. “24.2%” = прогнозний gap ÷ прогнозна комісія, не повний CP L1.</li>
         <li>Друга транзакція не поверне 100% у кожному кейсі: failed charges, обмеження payment methods і customer protection rules потребують fallback design.</li>
       </ul>
     </section>
