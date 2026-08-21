@@ -34,6 +34,13 @@
     .block-label.sol{background:var(--green)}
     .toc-hint{font-size:12px;color:var(--muted);margin:0 0 8px;max-width:70ch}
 
+    .sidenav a.nav-block{display:flex;align-items:flex-start;gap:8px;padding:9px 10px;margin:4px 0;border:1px solid #2a4a3c;border-left:3px solid #3a5a4a;background:#163028}
+    .sidenav a.nav-block .nb{flex:0 0 auto;font-size:10px;font-weight:900;color:#8fd0ae;min-width:1.4em}
+    .sidenav a.nav-block.fin{border-left-color:#d46a6a}
+    .sidenav a.nav-block.ops{border-left-color:#d4a24a}
+    .sidenav a.nav-block.sol{border-left-color:#3db878}
+    .sidenav a.nav-block.active{background:#1f3d30;border-color:#3db878;color:#fff}
+
     header{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:18px}
     .eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:850;color:var(--green)}
     h1{font-size:clamp(30px,4.5vw,48px);line-height:1.02;letter-spacing:-.045em;margin:7px 0 10px;max-width:780px}
@@ -106,43 +113,23 @@
       <div class="nav-title" data-lang="en">Second payment business case</div>
       <div class="nav-title" data-lang="uk">Бізнес-кейс другої транзакції</div>
       <div class="nav-links">
-        <div class="nav-group" data-lang="en">Start here</div>
-        <div class="nav-group" data-lang="uk">Початок</div>
-        <a href="#summary" data-lang="en">1. Summary</a>
-        <a href="#summary" data-lang="uk">1. Summary</a>
-        <a href="#how-it-works" data-lang="en">2. How it works now → to-be</a>
-        <a href="#how-it-works" data-lang="uk">2. Як працює зараз → to-be</a>
-
-        <div class="nav-group" data-lang="en">Financial problem</div>
-        <div class="nav-group" data-lang="uk">Фінансова проблема</div>
-        <a href="#finance-now" data-lang="en">3. Impact now</a>
-        <a href="#finance-now" data-lang="uk">3. Імпакт зараз</a>
-        <a href="#finance-forward" data-lang="en">4. Impact next (ATB/Fora)</a>
-        <a href="#finance-forward" data-lang="uk">4. Імпакт далі (ATB/Fora)</a>
-        <a href="#finance-logic" data-lang="en">5. Gap &amp; lost SF</a>
-        <a href="#finance-logic" data-lang="uk">5. Gap і втрачений SF</a>
-        <a href="#finance-cp" data-lang="en">6. CP L1 Stores vs country</a>
-        <a href="#finance-cp" data-lang="uk">6. CP L1 Stores vs країна</a>
-
-        <div class="nav-group" data-lang="en">Ops &amp; partners</div>
-        <div class="nav-group" data-lang="uk">Ops і партнери</div>
-        <a href="#ops-pain" data-lang="en">7. Why ops is hard</a>
-        <a href="#ops-pain" data-lang="uk">7. Чому ops важко</a>
-        <a href="#ops-tools" data-lang="en">8. Limits &amp; tools fail</a>
-        <a href="#ops-tools" data-lang="uk">8. Ліміти і чому tools fail</a>
-        <a href="#ops-cs" data-lang="en">9. Customer complaints</a>
-        <a href="#ops-cs" data-lang="uk">9. Скарги клієнтів</a>
-
-        <div class="nav-group" data-lang="en">Decision</div>
-        <div class="nav-group" data-lang="uk">Рішення</div>
-        <a href="#ask" data-lang="en">10. Product ask</a>
-        <a href="#ask" data-lang="uk">10. Запит до Product</a>
-        <a href="#improve" data-lang="en">11. How MVP helps</a>
-        <a href="#improve" data-lang="uk">11. Як MVP допомагає</a>
-        <a href="#legal" data-lang="en">12. Legal</a>
-        <a href="#legal" data-lang="uk">12. Legal</a>
-        <a href="#measure" data-lang="en">13. Alternatives &amp; metrics</a>
-        <a href="#measure" data-lang="uk">13. Альтернативи і метрики</a>
+        <a class="nav-block" href="#summary"><span class="nb">01</span><span data-lang="en">Summary</span><span data-lang="uk">Summary</span></a>
+        <a class="nav-block" href="#how-it-works"><span class="nb">02</span><span data-lang="en">As-is → To-be flow</span><span data-lang="uk">As-is → To-be flow</span></a>
+        <a class="nav-block fin" href="#finance-now"><span class="nb">03</span><span data-lang="en">Money now · gaps €19.4k</span><span data-lang="uk">Гроші зараз · gaps €19.4k</span></a>
+        <a class="nav-block fin" href="#finance-forward"><span class="nb">04</span><span data-lang="en">Money next · Mar’27 2.19%</span><span data-lang="uk">Гроші далі · Mar’27 2.19%</span></a>
+        <a class="nav-block fin" href="#finance-logic"><span class="nb">05</span><span data-lang="en">Gap = refunds + lost SF</span><span data-lang="uk">Gap = refunds + втрата SF</span></a>
+        <a class="nav-block fin" href="#finance-cp"><span class="nb">06</span><span data-lang="en">CP L1 before refunds</span><span data-lang="uk">CP L1 до refunds</span></a>
+        <a class="nav-block ops" href="#ops-pain"><span class="nb">07</span><span data-lang="en">Ops pain · Retail/Finance/stores</span><span data-lang="uk">Ops біль · Retail/Finance/магазини</span></a>
+        <a class="nav-block ops" href="#ops-tools"><span class="nb">08</span><span data-lang="en">Pick limits fail</span><span data-lang="uk">Ліміти picking не працюють</span></a>
+        <a class="nav-block ops" href="#ops-cs"><span class="nb">09</span><span data-lang="en">CS · missing/wrong items</span><span data-lang="uk">CS · missing/wrong items</span></a>
+        <a class="nav-block sol" href="#ask"><span class="nb">10</span><span data-lang="en">Ask · Ukraine MVP</span><span data-lang="uk">Ask · Ukraine MVP</span></a>
+        <a class="nav-block sol" href="#improve"><span class="nb">11</span><span data-lang="en">What improves</span><span data-lang="uk">Що поліпшиться</span></a>
+        <a class="nav-block sol" href="#legal"><span class="nb">12</span><span data-lang="en">Legal guardrails</span><span data-lang="uk">Legal-рамки</span></a>
+        <a class="nav-block sol" href="#measure"><span class="nb">13</span><span data-lang="en">Alternatives &amp; KPIs</span><span data-lang="uk">Альтернативи і KPI</span></a>
+      </div>
+      <div class="lang" aria-label="Language selector">
+        <button id="enBtn" class="active" onclick="setLanguage('en')">EN</button>
+        <button id="ukBtn" onclick="setLanguage('uk')">UA</button>
       </div>
     </aside>
     <main class="shell">
@@ -154,10 +141,6 @@
         <h1 data-lang="uk">Списувати фінальну суму після збірки</h1>
         <p data-lang="en">Why Ukraine needs a second payment transaction for substitutions, weighted goods and packaging</p>
         <p data-lang="uk">Чому Україні потрібна друга платіжна транзакція для замін, вагових товарів і пакування</p>
-      </div>
-      <div class="lang" aria-label="Language selector">
-        <button id="enBtn" class="active" onclick="setLanguage('en')">EN</button>
-        <button id="ukBtn" onclick="setLanguage('uk')">UA</button>
       </div>
     </header>
 
@@ -181,8 +164,8 @@
     </section>
 
     <div class="block" id="how-it-works">
-      <div class="block-label" data-lang="en">Block A · How it works</div>
-      <div class="block-label" data-lang="uk">Блок A · Як це працює</div>
+      <div class="block-label" data-lang="en">02 · As-is → To-be</div>
+      <div class="block-label" data-lang="uk">02 · As-is → To-be</div>
       <p class="toc-hint" data-lang="en">Read as-is vs to-be first — then the money and ops blocks.</p>
       <p class="toc-hint" data-lang="uk">Спочатку as-is vs to-be — далі гроші та ops.</p>
     <section class="section" id="asis">
@@ -228,8 +211,8 @@
     </div>
 
     <div class="block" id="finance-now">
-      <div class="block-label fin" data-lang="en">Block B · Financial problem · now</div>
-      <div class="block-label fin" data-lang="uk">Блок B · Фінансова проблема · зараз</div>
+      <div class="block-label fin" data-lang="en">03 · Money now</div>
+      <div class="block-label fin" data-lang="uk">03 · Гроші зараз</div>
       <p class="toc-hint" data-lang="en">Bolt funds positive settlement gaps today. Thin Stores CP cannot absorb this as grocery scales.</p>
       <p class="toc-hint" data-lang="uk">Bolt уже фінансує позитивні settlement gaps. Тонкий Stores CP не витримає, коли grocery масштабується.</p>
     <section class="section">
@@ -282,19 +265,19 @@
 </div>
 
     <div class="block" id="finance-forward">
-      <div class="block-label fin" data-lang="en">Block C · Financial problem · next</div>
-      <div class="block-label fin" data-lang="uk">Блок C · Фінансова проблема · далі</div>
+      <div class="block-label fin" data-lang="en">04 · Money next</div>
+      <div class="block-label fin" data-lang="uk">04 · Гроші далі</div>
       <p class="toc-hint" data-lang="en">Optimistic growth + ATB/Fora push Stores payout rate toward ~2.19% by Mar 2027.</p>
       <p class="toc-hint" data-lang="uk">Optimistic ріст + ATB/Fora піднімають Stores payout rate до ~2.19% у Mar 2027.</p>
 <section class="section" id="forecast">
       <div class="section-head"><div><div class="eyebrow">05 · Forecast</div><h2 data-lang="en">Optimistic growth turns leakage into a €186k exposure</h2><h2 data-lang="uk">Оптимістичний ріст перетворює leakage на ризик €186k</h2></div></div>
       <div class="grid two">
         <div class="card"><h3 data-lang="en">Projected payout by month</h3><h3 data-lang="uk">Прогноз виплат за місяць</h3><div class="chart"><canvas id="forecastChart"></canvas></div><div class="caption" data-lang="en">X-axis: Oct 2026–Mar 2027 · Y-axis: EUR thousands. Optimistic Stores forecast, mix-adjusted partner payout rates.</div><div class="caption" data-lang="uk">Вісь X: Oct 2026–Mar 2027 · вісь Y: тис. EUR. Optimistic Stores forecast, mix-adjusted partner payout rates.</div></div>
-        <div class="card"><h3 data-lang="en">Share of commission revenue consumed</h3><h3 data-lang="uk">Частка комісійного доходу, яку з’їдають виплати</h3><div class="chart"><canvas id="marginChart"></canvas></div><div class="caption" data-lang="en">X-axis: month · Y-axis: % of commission revenue. Before shopper, support, payment, incentives and other operating costs.</div><div class="caption" data-lang="uk">Вісь X: місяць · вісь Y: % commission revenue. До shopper, support, payment, incentives та інших operating costs.</div></div>
+        <div class="card"><h3 data-lang="en">Gap as % of commission (size only — not the P&amp;L driver)</h3><h3 data-lang="uk">Gap як % комісії (лише розмір — не драйвер P&amp;L)</h3><div class="chart"><canvas id="marginChart"></canvas></div><div class="caption" data-lang="en">X-axis: month · Y-axis: settlement gap ÷ commission %. Only a size check — the real hit is refunds (Y−X) + lost SF, not “commission broken”.</div><div class="caption" data-lang="uk">Вісь X: місяць · вісь Y: settlement gap ÷ комісія %. Лише масштаб — реальний удар це refunds (Y−X) + втрата SF, не «зламана комісія».</div></div>
       </div>
       <div class="table-wrap" style="margin-top:16px">
         <table>
-          <thead><tr><th data-lang="en">Month</th><th data-lang="uk">Місяць</th><th>GMV, EUR</th><th data-lang="en">Commission, EUR</th><th data-lang="uk">Комісія, EUR</th><th data-lang="en">Projected payout, EUR</th><th data-lang="uk">Прогноз виплат, EUR</th><th data-lang="en">Payout / GMV</th><th data-lang="uk">Виплати / GMV</th><th data-lang="en">Commission consumed</th><th data-lang="uk">З’їдено комісії</th></tr></thead>
+          <thead><tr><th data-lang="en">Month</th><th data-lang="uk">Місяць</th><th>GMV, EUR</th><th data-lang="en">Commission, EUR</th><th data-lang="uk">Комісія, EUR</th><th data-lang="en">Projected payout, EUR</th><th data-lang="uk">Прогноз виплат, EUR</th><th data-lang="en">Payout / GMV</th><th data-lang="uk">Виплати / GMV</th><th data-lang="en">Gap vs commission (size only)</th><th data-lang="uk">Gap vs комісія (лише розмір)</th></tr></thead>
           <tbody>
             <tr><td>Oct 2026</td><td>873,213</td><td>86,771</td><td>20,413</td><td>2.34%</td><td class="bad">23.5%</td></tr>
             <tr><td>Nov 2026</td><td>1,226,805</td><td>115,237</td><td>28,301</td><td>2.31%</td><td class="bad">24.6%</td></tr>
@@ -310,13 +293,13 @@
 </div>
 
     <div class="block" id="finance-logic">
-      <div class="block-label fin" data-lang="en">Block D · Why the money leaks (SF)</div>
-      <div class="block-label fin" data-lang="uk">Блок D · Чому течуть гроші (SF)</div>
+      <div class="block-label fin" data-lang="en">05 · Gap = refunds + lost SF</div>
+      <div class="block-label fin" data-lang="uk">05 · Gap = refunds + втрата SF</div>
 <section class="section">
-      <div class="section-head"><div><div class="eyebrow">06 · Logic</div><h2 data-lang="en">Gap = lost DF money via Service Fee (SF), not “broken commission”</h2><h2 data-lang="uk">Gap = втрачені гроші DF через Service Fee (SF), не «зламана комісія»</h2></div></div>
+      <div class="section-head"><div><div class="eyebrow">06 · Logic</div><h2 data-lang="en">Gap = refunds (Y−X) + lost SF — not “commission eaten”</h2><h2 data-lang="uk">Gap = refunds (Y−X) + втрата SF — не «з’їдена комісія»</h2></div></div>
       <div class="card">
-        <p data-lang="en" style="margin-bottom:10px;color:var(--ink)"><strong>Commission on partner acts is fine.</strong> Partner commission sits on what was shipped (Y). The profitability leak from an undercharged eater basket is elsewhere: <strong>Service Fee (SF)</strong> — part of DF — is charged as a <strong>% of the eater basket</strong>. If the eater pays X but the partner shipped Y &gt; X, Bolt never collects SF on the delta.</p>
-        <p data-lang="uk" style="margin-bottom:10px;color:var(--ink)"><strong>Комісія з актів партнера тут ні при чому.</strong> Вона сидить на відвантаженому (Y). Дірка в прибутковості від недосписаного кошика — в іншому: <strong>Service Fee (SF)</strong> — частина DF — береться як <strong>% від кошика eater</strong>. Якщо eater сплатив X, а партнер відвантажив Y &gt; X, SF на дельту Bolt не збирає.</p>
+        <p data-lang="en" style="margin-bottom:10px;color:var(--ink)"><strong>Ignore “commission consumed”.</strong> That column is only a size ratio (gap ÷ commission €). The real problem is simple: <strong>refunds</strong> = what the eater ordered/paid (X) vs what Bolt paid the partner on the act (Y), <strong>plus lost SF %</strong> on that same delta — because SF is billed on the eater basket.</p>
+        <p data-lang="uk" style="margin-bottom:10px;color:var(--ink)"><strong>Не читайте «з’їдено комісії».</strong> Та колонка — лише ratio розміру (gap ÷ € комісії). Реальна проблема проста: <strong>refunds</strong> = різниця між тим, що замовив/сплатив eater (X), і тим, що ми сплатили партнеру по акту (Y), <strong>плюс втрата SF %</strong> на тій самій дельті — бо SF береться від кошика eater.</p>
         <ul data-lang="en">
           <li><strong>X</strong> = eater checkout / charged basket (before / without final top-up).</li>
           <li><strong>Y</strong> = partner act = what was actually shipped (replacements, weight, bags…).</li>
@@ -363,8 +346,8 @@
 </div>
 
     <div class="block" id="finance-cp">
-      <div class="block-label fin" data-lang="en">Block E · CP L1 &amp; P&amp;L impact</div>
-      <div class="block-label fin" data-lang="uk">Блок E · CP L1 і P&amp;L імпакт</div>
+      <div class="block-label fin" data-lang="en">06 · CP L1 before refunds</div>
+      <div class="block-label fin" data-lang="uk">06 · CP L1 до refunds</div>
 <section class="section">
       <div class="section-head"><div><div class="eyebrow">07 · CP L1 now</div><h2 data-lang="en">Current CP L1 · Stores vs country (Stores + Restaurants)</h2><h2 data-lang="uk">Поточний CP L1 · Stores vs країна (Stores + Restaurants)</h2></div>
         <p data-lang="en">Last two full months: June and July 2026.</p>
@@ -398,16 +381,16 @@
           </div>
         </div>
       </div>
-      <div class="caption" data-lang="en">Source: Databricks fact_provider_monthly · CP L1 = total_contribution_profit_eur / total_gmv_before_discounts_eur. Stores = store_3p% (+ ANRI-PHARM, BRSM, VAPORS, PIVASOV). Restaurants = delivery_vertical food. Country = Stores + Restaurants.</div>
-      <div class="caption" data-lang="uk">Джерело: Databricks fact_provider_monthly · CP L1 = total_contribution_profit_eur / total_gmv_before_discounts_eur. Stores = store_3p% (+ ANRI-PHARM, BRSM, VAPORS, PIVASOV). Restaurants = delivery_vertical food. Країна = Stores + Restaurants.</div>
+      <div class="caption" data-lang="en">Source: Databricks fact_provider_monthly · CP L1 = total_contribution_profit_eur / total_gmv_before_discounts_eur · <strong>before settlement refunds</strong>. After refunds, expect ~1% GMV write-off on CM. Stores = store_3p% (+ ANRI-PHARM, BRSM, VAPORS, PIVASOV). Restaurants = food. Country = Stores + Restaurants.</div>
+      <div class="caption" data-lang="uk">Джерело: Databricks fact_provider_monthly · CP L1 = total_contribution_profit_eur / total_gmv_before_discounts_eur · <strong>без settlement refunds</strong>. Після refunds орієнтовно ~1% GMV списується з CM. Stores = store_3p% (+ ANRI-PHARM, BRSM, VAPORS, PIVASOV). Restaurants = food. Країна = Stores + Restaurants.</div>
       <div class="decision warn">
         <div class="decision-body" data-lang="en">
-          <strong>Stores CP L1 is thin vs restaurants: Jun 0.13% · Jul 2.66% vs ~11%</strong>
-          <p>June Stores CP L1 was almost flat (€0.6k / 0.13%); July recovered to €13.7k / 2.66%. Country Food stays ~10.4–10.7% only because restaurants carry it. A May/Jun-like monthly settlement gap of €4–6k already takes ~30–45% of Jul Stores CP L1.</p>
+          <strong>These CP L1 figures are before settlement refunds</strong>
+          <p>Databricks CP L1 here does <strong>not</strong> include the partner-vs-Bolt settlement gaps (refunds). Orientatively ~<strong>1% of GMV</strong> will still be written off against CM for those gaps. Example Jul Stores: reported CP L1 <strong>2.66%</strong> → after ~1% refunds on CM, closer to ~<strong>1.7%</strong>. Country Food still looks ~10%+ only because restaurants carry it.</p>
         </div>
         <div class="decision-body" data-lang="uk">
-          <strong>Stores CP L1 тонкий vs ресторани: чер 0.13% · лип 2.66% проти ~11%</strong>
-          <p>У червні Stores CP L1 майже нульовий (€0.6k / 0.13%); у липні відновився до €13.7k / 2.66%. Country Food тримає ~10.4–10.7% лише завдяки ресторанам. Місячний settlement gap рівня May/Jun €4–6k уже забирає ~30–45% від липневого Stores CP L1.</p>
+          <strong>Ці цифри CP L1 — без settlement refunds</strong>
+          <p>CP L1 з Databricks тут <strong>не включає</strong> partner-vs-Bolt settlement gaps (refunds). Орієнтовно ще ~<strong>1% від GMV</strong> буде списано з CM на ці gaps. Приклад лип Stores: у звіті CP L1 <strong>2.66%</strong> → після ~1% refunds у CM ближче до ~<strong>1.7%</strong>. Country Food виглядає ~10%+ лише тому, що тягнуть ресторани.</p>
         </div>
       </div>
     </section>
@@ -438,8 +421,8 @@
 </div>
 
     <div class="block" id="ops-pain">
-      <div class="block-label ops" data-lang="en">Block F · Operational pain</div>
-      <div class="block-label ops" data-lang="uk">Блок F · Операційний біль</div>
+      <div class="block-label ops" data-lang="en">07 · Ops pain</div>
+      <div class="block-label ops" data-lang="uk">07 · Ops біль</div>
       <p class="toc-hint" data-lang="en">Not only money — Retail, Finance and stores burn time every month explaining gaps and working under pick limits.</p>
       <p class="toc-hint" data-lang="uk">Не лише гроші — Retail, Finance і магазини щомісяця палять час на звірки та роботу під лімітами picking.</p>
 
@@ -519,7 +502,7 @@
       <div class="section-head"><div><div class="eyebrow">10 · New launches</div><h2 data-lang="en">ATB and Fora make the issue urgent</h2><h2 data-lang="uk">ATB і Fora роблять проблему терміновою</h2></div></div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th data-lang="en">Partner</th><th data-lang="uk">Партнер</th><th data-lang="en">Forecast GMV, EUR</th><th data-lang="uk">Прогноз GMV, EUR</th><th data-lang="en">Commission, EUR</th><th data-lang="uk">Комісія, EUR</th><th data-lang="en">Applied payout rate</th><th data-lang="uk">Payout rate</th><th data-lang="en">Projected payout, EUR</th><th data-lang="uk">Прогноз виплат, EUR</th><th data-lang="en">% of Stores GMV</th><th data-lang="uk">% від Stores GMV</th><th data-lang="en">Commission consumed</th><th data-lang="uk">З’їдено комісії</th></tr></thead>
+          <thead><tr><th data-lang="en">Partner</th><th data-lang="uk">Партнер</th><th data-lang="en">Forecast GMV, EUR</th><th data-lang="uk">Прогноз GMV, EUR</th><th data-lang="en">Commission, EUR</th><th data-lang="uk">Комісія, EUR</th><th data-lang="en">Applied payout rate</th><th data-lang="uk">Payout rate</th><th data-lang="en">Projected payout, EUR</th><th data-lang="uk">Прогноз виплат, EUR</th><th data-lang="en">% of Stores GMV</th><th data-lang="uk">% від Stores GMV</th><th data-lang="en">Gap vs commission (size only)</th><th data-lang="uk">Gap vs комісія (лише розмір)</th></tr></thead>
           <tbody>
             <tr><td>VARUS</td><td>1,489,864</td><td>82,000</td><td>3.90%</td><td class="bad">58,123</td><td class="bad">0.70%</td><td class="bad">70.9%</td></tr>
             <tr><td>ATB</td><td>1,580,942</td><td>63,238</td><td>2.70% benchmark</td><td class="bad">42,637</td><td class="bad">0.52%</td><td class="bad">67.4%</td></tr>
@@ -572,8 +555,8 @@
     </div>
 
     <div class="block" id="ask">
-      <div class="block-label sol" data-lang="en">Block G · What to do</div>
-      <div class="block-label sol" data-lang="uk">Блок G · Що робити</div>
+      <div class="block-label sol" data-lang="en">10 · What to do</div>
+      <div class="block-label sol" data-lang="uk">10 · Що робити</div>
     <section class="section">
       <div class="section-head">
         <div><div class="eyebrow">Part C · What to do</div><h2 data-lang="en">Ask, Legal guardrails, and how the MVP improves the situation</h2><h2 data-lang="uk">Запит, Legal-рамки і як MVP поліпшить ситуацію</h2></div>
@@ -780,7 +763,7 @@
     new Chart(document.getElementById('actualChart'),{type:'bar',data:{labels:monthsActual,datasets:[{data:[1.8,2.0,2.1,3.2,6.0,4.4],backgroundColor:red,borderRadius:5}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>'€'+c.raw.toFixed(1)+'k'}}},scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'Gross payout (EUR k)'}}}}});
     new Chart(document.getElementById('rateChart'),{type:'line',data:{labels:monthsActual,datasets:[{data:[1.01,.98,.80,1.04,1.48,.98],borderColor:amber,backgroundColor:'rgba(148,101,26,.12)',fill:true,tension:.25,pointRadius:4}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>c.raw.toFixed(2)+'%'}}},scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'Gross payout / GMV (%)'},ticks:{callback:v=>v+'%'}}}}});
     new Chart(document.getElementById('forecastChart'),{type:'bar',data:{labels:monthsForecast,datasets:[{data:[20.4,28.3,31.2,30.9,33.7,41.2],backgroundColor:red,borderRadius:5}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>'€'+c.raw.toFixed(1)+'k'}}},scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'Projected payout (EUR k)'}}}}});
-    new Chart(document.getElementById('marginChart'),{type:'line',data:{labels:monthsForecast,datasets:[{data:[23.5,24.6,24.6,24.5,24.2,23.8],borderColor:green,backgroundColor:'rgba(47,125,91,.12)',fill:true,tension:.25,pointRadius:4}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>c.raw.toFixed(1)+'%'}}},scales:{...common.scales,y:{...common.scales.y,min:0,max:30,title:{display:true,text:'Commission consumed (%)'},ticks:{callback:v=>v+'%'}}}}});
+    new Chart(document.getElementById('marginChart'),{type:'line',data:{labels:monthsForecast,datasets:[{data:[23.5,24.6,24.6,24.5,24.2,23.8],borderColor:green,backgroundColor:'rgba(47,125,91,.12)',fill:true,tension:.25,pointRadius:4}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>c.raw.toFixed(1)+'%'}}},scales:{...common.scales,y:{...common.scales.y,min:0,max:30,title:{display:true,text:'Gap / commission % (size)'},ticks:{callback:v=>v+'%'}}}}});
     function setLanguage(lang){
       document.body.className='lang-'+lang;
       document.documentElement.lang=lang;
@@ -804,3 +787,4 @@
   </script>
 </body>
 </html>
+                                                                                                                                                                                                                          
