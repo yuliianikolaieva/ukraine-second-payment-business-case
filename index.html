@@ -117,8 +117,8 @@
         <div class="eyebrow" data-lang="en">Product ask</div><div class="eyebrow" data-lang="uk">Запит до Product</div>
         <h2 data-lang="en">Prioritize a Ukraine MVP for hold → release → final charge</h2>
         <h2 data-lang="uk">Пріоритезувати MVP для України: hold → release → final charge</h2>
-        <p data-lang="en">Authorize an estimated amount at checkout, receive the final basket after picking, release the original hold and charge the actual total with clear eater consent and item-level visibility.</p>
-        <p data-lang="uk">Авторизувати орієнтовну суму під час checkout, отримати фінальний кошик після picking, зняти початковий hold і списати фактичну суму зі зрозумілою згодою eater та item-level visibility.</p>
+        <p data-lang="en">Authorize an estimated amount at checkout, receive the final basket after picking, release the original hold and charge the actual total <strong>with clear upfront pricing disclosure and eater consent</strong> — not a silent post-checkout upcharge (Legal: LSS-64024).</p>
+        <p data-lang="uk">Авторизувати орієнтовну суму під час checkout, отримати фінальний кошик після picking, зняти початковий hold і списати фактичну суму <strong>з чітким попередженням про ціну на checkout і згодою eater</strong> — не silent upcharge після замовлення (Legal: LSS-64024).</p>
         <p style="margin-top:10px" data-lang="en"><strong>MVP</strong> = Minimum Viable Product: the smallest shippable version that proves hold → release → final charge on one partner (VARUS), before scaling to ATB / Fora.</p>
         <p style="margin-top:10px" data-lang="uk"><strong>MVP</strong> = Minimum Viable Product (мінімально життєздатний продукт): найменша версія, яка доводить hold → release → final charge на одному партнері (VARUS), перш ніж масштабувати на ATB / Fora.</p>
       </div>
@@ -371,7 +371,56 @@
     </section>
 
     <section class="section">
-      <div class="section-head"><div><div class="eyebrow">07 · Decision framework</div><h2 data-lang="en">Alternatives do not solve both economics and UX</h2><h2 data-lang="uk">Альтернативи не вирішують одночасно economics та UX</h2></div></div>
+      <div class="section-head">
+        <div><div class="eyebrow">07 · Legal (LSS-64024)</div><h2 data-lang="en">Legal conclusions from the overbooking / second-charge review</h2><h2 data-lang="uk">Висновки Legal з рев’ю overbooking / second charge</h2></div>
+        <p data-lang="en">Source: Liisa (Legal) on LSS-64024, Mar 2026 — after comparing Glovo UA/PL/GH/PT user terms and EU consumer-law practice.</p>
+        <p data-lang="uk">Джерело: Liisa (Legal) у LSS-64024, бер. 2026 — після порівняння Glovo UA/PL/GH/PT user terms і практики EU consumer law.</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3 data-lang="en">What Legal strongly rejects</h3>
+          <h3 data-lang="uk">Що Legal категорично не рекомендує</h3>
+          <ul data-lang="en">
+            <li><strong>Glovo-style silent upcharge</strong> — customer sees one price at checkout, then may be charged more later without clear advance information and, where relevant, consent.</li>
+            <li>Disclosing this only in user T&amp;Cs is <strong>not enough</strong>; key pricing must be visible in the checkout flow before order submit.</li>
+            <li>Especially high risk for <strong>more expensive replacements</strong>. Weight-based items have slightly more flexibility only if checkout clearly states the price is an estimate and how the final amount is calculated (closer to Bolt’s current flow).</li>
+            <li>Following Glovo “as is” is <strong>strongly not recommended in EU markets nor in non-EU markets</strong>.</li>
+          </ul>
+          <ul data-lang="uk">
+            <li><strong>Silent upcharge як у Glovo</strong> — eater бачить одну ціну на checkout, а пізніше може бути списано більше без чіткого попередження і, де потрібно, згоди.</li>
+            <li>Згадки лише в user T&amp;Cs <strong>недостатньо</strong>; ключова цінова інформація має бути на checkout до submit замовлення.</li>
+            <li>Особливо високий ризик для <strong>дорожчих замін</strong>. Для вагових товарів є трохи більше гнучкості лише якщо checkout чітко каже, що ціна орієнтовна, і як рахується фінал (ближче до поточного flow Bolt).</li>
+            <li>Копіювати Glovo “як є” <strong>категорично не рекомендується ні в EU, ні в non-EU ринках</strong>.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 data-lang="en">What is allowed with conditions (incl. Ukraine)</h3>
+          <h3 data-lang="uk">Що можливо за умов (включно з Україною)</h3>
+          <ul data-lang="en">
+            <li>In <strong>non-EU markets</strong> (Ukraine), Bolt may accept some additional legal risk; local consumer rules are often similar to the EU, even if enforcement is less strict. Legal can assess a <strong>specific-market</strong> design if Product proceeds.</li>
+            <li>Any Glovo-like or adjusted approach needs: detailed UX (app / email / bank statement), clear commercial numbers, Legal risk assessment, and <strong>higher-level commercial sign-off</strong>.</li>
+            <li>Prefer a <strong>small pilot</strong> (1–2 markets; Legal preferred Bolt Market first to avoid partner T&amp;Cs friction). Be ready to revert in <strong>1–2 weeks</strong> if an authority demands compliance.</li>
+            <li>EU enforcement context: authorities can fine up to <strong>4% of annual turnover</strong>; first step is usually a short compliance deadline. PL/RO flagged as especially sensitive — Ukraine is outside that EU enforcement path but still needs a compliant UX.</li>
+            <li><strong>Open follow-ups:</strong> merchant liability if partners are blamed for price deltas; Partner T&amp;Cs updates; separate payment-services review (charging above the initially authorised amount).</li>
+          </ul>
+          <ul data-lang="uk">
+            <li>У <strong>non-EU ринках</strong> (Україна) Bolt може взяти додатковий legal risk; локальні consumer rules часто схожі на EU, навіть якщо enforcement слабший. Legal може оцінити <strong>конкретний market design</strong>, якщо Product йде далі.</li>
+            <li>Будь-який Glovo-like / adjusted підхід потребує: детального UX (app / email / bank statement), чітких commercial numbers, Legal risk assessment і <strong>higher-level commercial sign-off</strong>.</li>
+            <li>Краще <strong>малий пілот</strong> (1–2 ринки; Legal віддавала перевагу спочатку Bolt Market, щоб не чіпати Partner T&amp;Cs). Бути готовими відкотити за <strong>1–2 тижні</strong>, якщо регулятор вимагає compliance.</li>
+            <li>EU-контекст: штрафи до <strong>4% річного turnover</strong>; зазвичай спочатку короткий deadline на виправлення. PL/RO — особливо чутливі; Україна поза цим EU-path, але UX усе одно має бути compliant.</li>
+            <li><strong>Відкриті follow-ups:</strong> liability партнерів за price deltas; оновлення Partner T&amp;Cs; окремий payment-services review (списання вище початково авторизованої суми).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="decision" style="margin-top:14px">
+        <strong data-lang="en">Implication for this Ukraine MVP</strong><strong data-lang="uk">Що це означає для Ukraine MVP</strong>
+        <p data-lang="en">Do <strong>not</strong> ship a silent second charge like Glovo. Ship hold → disclose final basket (item-level) → consent where needed → release → charge. That is the design Legal can risk-assess for Ukraine as a non-EU pilot, with commercial numbers already in this case and a fast rollback path.</p>
+        <p data-lang="uk">Не запускати silent second charge як у Glovo. Запускати hold → показати фінальний кошик (item-level) → consent де потрібно → release → charge. Саме такий design Legal може оцінити для України як non-EU пілота, з цифрами з цього кейсу і швидким rollback.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">08 · Decision framework</div><h2 data-lang="en">Alternatives do not solve both economics and UX</h2><h2 data-lang="uk">Альтернативи не вирішують одночасно economics та UX</h2></div></div>
       <div class="table-wrap">
         <table>
           <thead><tr><th data-lang="en">Option</th><th data-lang="uk">Опція</th><th data-lang="en">Margin protection</th><th data-lang="uk">Захист margin</th><th>UX</th><th data-lang="en">Scales to ATB/Fora</th><th data-lang="uk">Масштабується на ATB/Fora</th><th data-lang="en">Verdict</th><th data-lang="uk">Висновок</th></tr></thead>
@@ -387,7 +436,7 @@
     </section>
 
     <section class="section">
-      <div class="section-head"><div><div class="eyebrow">08 · Measurement</div><h2 data-lang="en">Pilot success criteria</h2><h2 data-lang="uk">Критерії успіху пілота</h2></div></div>
+      <div class="section-head"><div><div class="eyebrow">09 · Measurement</div><h2 data-lang="en">Pilot success criteria</h2><h2 data-lang="uk">Критерії успіху пілота</h2></div></div>
       <div class="grid three">
         <div class="card"><h3 data-lang="en">Economics</h3><h3 data-lang="uk">Economics</h3><ul data-lang="en"><li>≥90% reduction in Bolt-funded positive deltas.</li><li>Net payment fees vs avoided payout.</li><li>Commission retained after all variable costs.</li></ul><ul data-lang="uk"><li>≥90% зменшення Bolt-funded positive deltas.</li><li>Net payment fees проти avoided payout.</li><li>Збережена комісія після variable costs.</li></ul></div>
         <div class="card"><h3 data-lang="en">Payment reliability</h3><h3 data-lang="uk">Payment reliability</h3><ul data-lang="en"><li>Final charge success rate.</li><li>Release latency and duplicate-hold rate.</li><li>Fallback and debt incidence.</li></ul><ul data-lang="uk"><li>Final charge success rate.</li><li>Release latency і duplicate-hold rate.</li><li>Fallback і debt incidence.</li></ul></div>
@@ -403,6 +452,7 @@
         <li>Forecast uses the optimistic Oct 2026–Mar 2027 scenario. Actual UAH payouts and partner tables are converted at 50.89 UAH/EUR from the forecast assumptions.</li>
         <li>Commission is treated as accruing on partner act GMV (Y). Gap = act GMV − checkout charge. Net ≈ commission(Y) − gap. “24.2%” = forecast gap ÷ forecast commission, not full CP L1.</li>
         <li>Second payment will not recover 100% in every case: failed charges, payment-method constraints and customer protection rules require a fallback design.</li>
+        <li>Legal conclusions (LSS-64024, Liisa, Mar 2026): Glovo-style silent upcharge is non-compliant / high-risk under EU consumer law and strongly not recommended in EU or non-EU; Ukraine may proceed only with clear checkout disclosure, consent where needed, commercial + Legal sign-off, and a separate payment-services review still open.</li>
       </ul>
       <ul data-lang="uk">
         <li>Фактична виплата — позитивна різниця partner GMV мінус Bolt GMV у refund workbook. Вона об’єднує заміни, вагу, пакування та інші зміни, не відображені в системі; файл не розділяє ці драйвери.</li>
@@ -410,6 +460,7 @@
         <li>Прогноз використовує optimistic scenario Oct 2026–Mar 2027. Фактичні UAH-виплати та partner-таблиці конвертовано за 50.89 UAH/EUR з assumptions forecast.</li>
         <li>Комісія вважається нарахованою від GMV актів партнера (Y). Gap = GMV акта − checkout. Нетто ≈ комісія(Y) − gap. “24.2%” = прогнозний gap ÷ прогнозна комісія, не повний CP L1.</li>
         <li>Друга транзакція не поверне 100% у кожному кейсі: failed charges, обмеження payment methods і customer protection rules потребують fallback design.</li>
+        <li>Висновки Legal (LSS-64024, Liisa, бер. 2026): silent upcharge як у Glovo — non-compliant / high-risk за EU consumer law і категорично не рекомендований у EU та non-EU; Україна можлива лише з чітким disclosure на checkout, consent де потрібно, commercial + Legal sign-off; окремий payment-services review ще відкритий.</li>
       </ul>
     </section>
 
