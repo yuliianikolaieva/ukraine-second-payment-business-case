@@ -273,10 +273,23 @@
     </section>
 <section class="section">
       <div class="section-head"><div><div class="eyebrow">07 · CP L1 now</div><h2 data-lang="en">Current CP L1 · Stores vs country (Stores + Restaurants)</h2><h2 data-lang="uk">Поточний CP L1 · Stores vs країна (Stores + Restaurants)</h2></div>
-        <p data-lang="en">Last two months available in Databricks (Jul 2026 full · Aug 2026 MTD).</p>
-        <p data-lang="uk">Два останні місяці в Databricks (лип 2026 повний · сер 2026 MTD).</p>
+        <p data-lang="en">Last two full months: June and July 2026.</p>
+        <p data-lang="uk">Два останні повні місяці: червень і липень 2026.</p>
       </div>
       <div class="grid two">
+        <div class="card">
+          <h3 data-lang="en">June 2026</h3><h3 data-lang="uk">Червень 2026</h3>
+          <div class="table-wrap" style="margin-top:10px">
+            <table>
+              <thead><tr><th data-lang="en">Scope</th><th data-lang="uk">Скоуп</th><th>GMV</th><th data-lang="en">Commission</th><th data-lang="uk">Комісія</th><th>CP L1</th><th>CP L1 %</th></tr></thead>
+              <tbody>
+                <tr><td>Stores</td><td>€442k</td><td>12.26%</td><td class="bad">€0.6k</td><td class="bad">0.13%</td></tr>
+                <tr><td>Restaurants</td><td>€8.29m</td><td>18.49%</td><td class="good">€904k</td><td class="good">10.92%</td></tr>
+                <tr><td data-lang="en">Ukraine Food total</td><td data-lang="uk">Україна Food разом</td><td>€8.73m</td><td>18.17%</td><td>€905k</td><td>10.37%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         <div class="card">
           <h3 data-lang="en">July 2026</h3><h3 data-lang="uk">Липень 2026</h3>
           <div class="table-wrap" style="margin-top:10px">
@@ -290,43 +303,35 @@
             </table>
           </div>
         </div>
-        <div class="card">
-          <h3 data-lang="en">August 2026 · MTD</h3><h3 data-lang="uk">Серпень 2026 · MTD</h3>
-          <div class="table-wrap" style="margin-top:10px">
-            <table>
-              <thead><tr><th data-lang="en">Scope</th><th data-lang="uk">Скоуп</th><th>GMV</th><th data-lang="en">Commission</th><th data-lang="uk">Комісія</th><th>CP L1</th><th>CP L1 %</th></tr></thead>
-              <tbody>
-                <tr><td>Stores</td><td>€419k</td><td>11.01%</td><td>€10.4k</td><td>2.47%</td></tr>
-                <tr><td>Restaurants</td><td>€6.42m</td><td>18.34%</td><td class="good">€694k</td><td class="good">10.80%</td></tr>
-                <tr><td data-lang="en">Ukraine Food total</td><td data-lang="uk">Україна Food разом</td><td>€6.84m</td><td>17.89%</td><td>€704k</td><td>10.29%</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
-      <div class="caption" data-lang="en">Source: Databricks fact_provider_monthly · as of data load ~21 Aug 2026 · CP L1 = total_contribution_profit_eur / total_gmv_before_discounts_eur. Stores = store_3p% (+ ANRI-PHARM, BRSM, VAPORS, PIVASOV). Restaurants = delivery_vertical food. Country = Stores + Restaurants. August is month-to-date, not a full month.</div>
-      <div class="caption" data-lang="uk">Джерело: Databricks fact_provider_monthly · станом на ~21 Aug 2026 · CP L1 = total_contribution_profit_eur / total_gmv_before_discounts_eur. Stores = store_3p% (+ ANRI-PHARM, BRSM, VAPORS, PIVASOV). Restaurants = delivery_vertical food. Країна = Stores + Restaurants. Серпень — MTD, не повний місяць.</div>
+      <div class="caption" data-lang="en">Source: Databricks fact_provider_monthly · CP L1 = total_contribution_profit_eur / total_gmv_before_discounts_eur. Stores = store_3p% (+ ANRI-PHARM, BRSM, VAPORS, PIVASOV). Restaurants = delivery_vertical food. Country = Stores + Restaurants.</div>
+      <div class="caption" data-lang="uk">Джерело: Databricks fact_provider_monthly · CP L1 = total_contribution_profit_eur / total_gmv_before_discounts_eur. Stores = store_3p% (+ ANRI-PHARM, BRSM, VAPORS, PIVASOV). Restaurants = delivery_vertical food. Країна = Stores + Restaurants.</div>
       <div class="decision warn">
-        <strong data-lang="en">Stores CP L1 stays thin: ~2.5–2.7% vs ~11% for restaurants</strong><strong data-lang="uk">Stores CP L1 лишається тонким: ~2.5–2.7% проти ~11% у ресторанів</strong>
-        <p data-lang="en">Jul Stores CP L1 €13.7k (2.66%); Aug MTD €10.4k (2.47%). Country Food stays ~10.3–10.7% only because restaurants carry it. A May/Jun-like monthly settlement gap of €4–6k already takes ~30–45% of Jul Stores CP L1.</p>
-        <p data-lang="uk">Лип Stores CP L1 €13.7k (2.66%); сер MTD €10.4k (2.47%). Country Food тримає ~10.3–10.7% лише завдяки ресторанам. Місячний settlement gap рівня May/Jun €4–6k уже забирає ~30–45% від липневого Stores CP L1.</p>
+        <div class="decision-body" data-lang="en">
+          <strong>Stores CP L1 is thin vs restaurants: Jun 0.13% · Jul 2.66% vs ~11%</strong>
+          <p>June Stores CP L1 was almost flat (€0.6k / 0.13%); July recovered to €13.7k / 2.66%. Country Food stays ~10.4–10.7% only because restaurants carry it. A May/Jun-like monthly settlement gap of €4–6k already takes ~30–45% of Jul Stores CP L1.</p>
+        </div>
+        <div class="decision-body" data-lang="uk">
+          <strong>Stores CP L1 тонкий vs ресторани: чер 0.13% · лип 2.66% проти ~11%</strong>
+          <p>У червні Stores CP L1 майже нульовий (€0.6k / 0.13%); у липні відновився до €13.7k / 2.66%. Country Food тримає ~10.4–10.7% лише завдяки ресторанам. Місячний settlement gap рівня May/Jun €4–6k уже забирає ~30–45% від липневого Stores CP L1.</p>
+        </div>
       </div>
     </section>
 <section class="section">
       <div class="section-head"><div><div class="eyebrow">08 · P&amp;L impact</div><h2 data-lang="en">Impact on margin, sales and commission · now vs next</h2><h2 data-lang="uk">Імпакт на маржу, продажі та комісію · зараз і далі</h2></div></div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th data-lang="en">Metric</th><th data-lang="uk">Метрика</th><th data-lang="en">Now (Jul / Aug MTD)</th><th data-lang="uk">Зараз (лип / сер MTD)</th><th data-lang="en">Jan–Jun 2026</th><th data-lang="uk">Jan–Jun 2026</th><th data-lang="en">Oct 2026–Mar 2027 optimistic</th><th data-lang="uk">Oct 2026–Mar 2027 optimistic</th></tr></thead>
+          <thead><tr><th data-lang="en">Metric</th><th data-lang="uk">Метрика</th><th data-lang="en">Now (Jun / Jul)</th><th data-lang="uk">Зараз (чер / лип)</th><th data-lang="en">Jan–Jun 2026</th><th data-lang="uk">Jan–Jun 2026</th><th data-lang="en">Oct 2026–Mar 2027 optimistic</th><th data-lang="uk">Oct 2026–Mar 2027 optimistic</th></tr></thead>
           <tbody>
-            <tr><td data-lang="en">Stores GMV / sales</td><td data-lang="uk">Stores GMV / продажі</td><td>€513k / Aug €419k</td><td>€1.79m</td><td>€8.26m</td></tr>
-            <tr><td data-lang="en">Stores commission %</td><td data-lang="uk">Stores commission %</td><td>11.61% / 11.01%</td><td>~13.5% avg</td><td class="bad">~9.3%</td></tr>
-            <tr><td data-lang="en">Stores commission €</td><td data-lang="uk">Stores комісія €</td><td>€59.6k / €46.2k</td><td>€240.5k</td><td>€767.9k</td></tr>
-            <tr><td data-lang="en">Stores CP L1</td><td data-lang="uk">Stores CP L1</td><td>€13.7k / 2.66% · Aug €10.4k / 2.47%</td><td class="bad">−€56.9k / −3.2%</td><td>~€220k if Jul CP% holds, before gap</td></tr>
+            <tr><td data-lang="en">Stores GMV / sales</td><td data-lang="uk">Stores GMV / продажі</td><td>€442k / €513k</td><td>€1.79m</td><td>€8.26m</td></tr>
+            <tr><td data-lang="en">Stores commission %</td><td data-lang="uk">Stores commission %</td><td>12.26% / 11.61%</td><td>~13.5% avg</td><td class="bad">~9.3%</td></tr>
+            <tr><td data-lang="en">Stores commission €</td><td data-lang="uk">Stores комісія €</td><td>€54.2k / €59.6k</td><td>€240.5k</td><td>€767.9k</td></tr>
+            <tr><td data-lang="en">Stores CP L1</td><td data-lang="uk">Stores CP L1</td><td class="bad">€0.6k / 0.13% · €13.7k / 2.66%</td><td class="bad">−€56.9k / −3.2%</td><td>~€220k if Jul CP% holds, before gap</td></tr>
             <tr><td data-lang="en">Settlement gap (acts − checkout)</td><td data-lang="uk">Settlement gap (акти − checkout)</td><td>~€3–6k / mo</td><td class="bad">€19.4k</td><td class="bad">€185.8k · 2.25% GMV</td></tr>
             <tr><td data-lang="en">Lost SF on gap (≈5.2%)</td><td data-lang="uk">Втрачений SF на gap (≈5.2%)</td><td>~€0.2–0.3k / mo</td><td class="bad">≈ €1.0k</td><td class="bad">≈ €9.7k</td></tr>
             <tr><td data-lang="en">Gap ÷ Stores commission (size only)</td><td data-lang="uk">Gap ÷ комісія Stores (лише масштаб)</td><td>~5–10%</td><td>8.1%</td><td>24.2%</td></tr>
-            <tr><td data-lang="en">Gap ÷ Stores CP L1</td><td data-lang="uk">Gap ÷ Stores CP L1</td><td class="bad">~30–45% of Jul CP</td><td class="bad">&gt;100% (CP was negative)</td><td class="bad">can erase most of thin Stores CP</td></tr>
-            <tr><td data-lang="en">Ukraine Food CP L1 (Stores+Restaurants)</td><td data-lang="uk">CP L1 країни (Stores+Restaurants)</td><td>€995k / 10.65% · Aug €704k / 10.29%</td><td>~€4.0m / ~8.3%</td><td>restaurant-led; Stores drag grows</td></tr>
+            <tr><td data-lang="en">Gap ÷ Stores CP L1</td><td data-lang="uk">Gap ÷ Stores CP L1</td><td class="bad">&gt;100% Jun · ~30–45% Jul</td><td class="bad">&gt;100% (CP was negative)</td><td class="bad">can erase most of thin Stores CP</td></tr>
+            <tr><td data-lang="en">Ukraine Food CP L1 (Stores+Restaurants)</td><td data-lang="uk">CP L1 країни (Stores+Restaurants)</td><td>€905k / 10.37% · €995k / 10.65%</td><td>~€4.0m / ~8.3%</td><td>restaurant-led; Stores drag grows</td></tr>
           </tbody>
         </table>
       </div>
@@ -373,20 +378,14 @@
         </table>
       </div>
       <div class="decision warn">
-        <strong data-lang="en">Going forward: settlement “refunds” ≈ 2.25% of Stores GMV; ATB+Fora alone ≈ 0.80%</strong>
-        <strong data-lang="uk">Далі: settlement «рефанди» ≈ 2.25% від Stores GMV; лише ATB+Fora ≈ 0.80%</strong>
-        <ul data-lang="en" style="margin-top:6px">
-          <li>Optimistic Oct’26–Mar’27: total projected positive gaps <strong>€185.8k ≈ 2.25% of Stores GMV</strong> (€8.26m) — vs observed ~1.1% Jan–Jun.</li>
-          <li><strong>ATB + Fora</strong> alone: <strong>€65.9k ≈ 0.80% of total Stores GMV</strong> (and 2.70% of their own GMV). That is ~35% of all forecast gaps, before they even have history.</li>
-          <li>Per partner vs own GMV: ATB/Fora <strong>2.70%</strong> grocery benchmark; vs country Stores GMV they add ~0.52% (ATB) + ~0.28% (Fora).</li>
-          <li>No ATB/Fora reconciliation yet — 2.70% = pooled gross positive payout / Bolt GMV of current grocery partners. More relevant than the 1.08% old country mix rate.</li>
-        </ul>
-        <ul data-lang="uk" style="margin-top:6px">
-          <li>Optimistic Oct’26–Mar’27: усі позитивні gaps <strong>€185.8k ≈ 2.25% від Stores GMV</strong> (€8.26m) — проти ~1.1% у Jan–Jun.</li>
-          <li><strong>Лише ATB + Fora</strong>: <strong>€65.9k ≈ 0.80% від усього Stores GMV</strong> (і 2.70% від їхнього GMV). Це ~35% усіх прогнозних gaps, ще до наявної історії.</li>
-          <li>На партнера vs власний GMV: ATB/Fora <strong>2.70%</strong> grocery benchmark; vs country Stores GMV додають ~0.52% (ATB) + ~0.28% (Fora).</li>
-          <li>Історії ATB/Fora ще немає — 2.70% = pooled gross positive payout / Bolt GMV поточних grocery. Релевантніше за старий country mix 1.08%.</li>
-        </ul>
+        <div class="decision-body" data-lang="en">
+          <strong>By March 2027, Bolt Food Stores payout rate ≈ 2.19% of Stores GMV</strong>
+          <p>Optimistic mix with ATB/Fora: Mar’27 projected settlement gap <strong>€41.2k on €1.88m Stores GMV → payout rate 2.19%</strong> (vs ~1.1% observed Jan–Jun country mix). Six-month window averages <strong>2.25%</strong>. ATB+Fora alone still run at the <strong>2.70%</strong> grocery benchmark on their own GMV and contribute ~0.80% of total Stores GMV across the period (~35% of all forecast gaps).</p>
+        </div>
+        <div class="decision-body" data-lang="uk">
+          <strong>На березень 2027 payout rate Bolt Food Stores ≈ 2.19% від Stores GMV</strong>
+          <p>Optimistic mix з ATB/Fora: у Mar’27 прогнозний settlement gap <strong>€41.2k на €1.88m Stores GMV → payout rate 2.19%</strong> (проти ~1.1% у Jan–Jun country mix). За шість місяців у середньому <strong>2.25%</strong>. Лише ATB+Fora лишаються на grocery benchmark <strong>2.70%</strong> від свого GMV і дають ~0.80% від усього Stores GMV за період (~35% усіх прогнозних gaps).</p>
+        </div>
       </div>
     </section>
 <section class="section">
