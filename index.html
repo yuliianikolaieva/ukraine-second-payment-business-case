@@ -414,10 +414,26 @@
           </ul>
         </div>
       </div>
+      <div class="decision warn" style="margin-top:14px">
+        <strong data-lang="en">Same company, different payment logic — Bolt ride-hailing already does post-trip final charge</strong>
+        <strong data-lang="uk">Одна компанія, різна логіка оплати — у Bolt ride-hailing уже працює досписання після поїздки</strong>
+        <ul data-lang="en" style="margin-top:6px">
+          <li>In <strong>Bolt ride-hailing</strong>, the rider sees an <strong>estimate</strong> at request; the card is authorised / held, and the <strong>final fare is charged after the trip</strong> based on actual route, time, wait and surcharges — including when that amount is higher than the estimate (досписання з карти).</li>
+          <li>Blocking the same pattern for <strong>Food Stores</strong> (estimate at checkout → hold → final basket after picking → release → charge) creates an internal <strong>double standard</strong>: one Bolt product already settles the true price after service delivery; another leaves the delta on Bolt’s P&amp;L.</li>
+          <li><strong>Why this is still compliance (unlike Glovo’s silent upcharge):</strong> rides are compliant when the app makes clear that the shown amount is an <strong>estimate</strong>, what drives the final price (distance, time, etc.), and the customer can see the settled fare. Legal’s red line is charging more than a presented “fixed” checkout price with no advance disclosure / consent — not the existence of a second / final charge itself.</li>
+          <li><strong>Stores MVP should mirror the rides compliance pattern:</strong> checkout = estimate (weight / possible substitution rules disclosed) → item-level final basket shown → consent where needed for price-up replacements → then release &amp; charge. That is the same company logic as rides, not a copy of Glovo’s opaque post-order mark-up.</li>
+        </ul>
+        <ul data-lang="uk" style="margin-top:6px">
+          <li>У <strong>Bolt ride-hailing</strong> пасажир бачить <strong>орієнтовну</strong> ціну при замовленні; карта авторизується / hold, а <strong>фінальний тариф списується після поїздки</strong> за фактичним маршрутом, часом, очікуванням і надбавками — включно коли сума вища за estimate (досписання з карти).</li>
+          <li>Блокувати той самий патерн для <strong>Food Stores</strong> (estimate на checkout → hold → фінальний кошик після picking → release → charge) — це внутрішній <strong>подвійний стандарт</strong>: один продукт Bolt уже фіналізує ціну після надання послуги; інший залишає дельту на P&amp;L Bolt.</li>
+          <li><strong>Чому це комплаенс (на відміну від silent upcharge Glovo):</strong> rides комплаентні, коли в апці зрозуміло, що сума — <strong>estimate</strong>, від чого залежить фінал (відстань, час тощо), і клієнт бачить settled fare. Червона лінія Legal — списати більше за заявлену «фіксовану» ціну checkout без попереднього disclosure / consent, а не сам факт другої / фінальної транзакції.</li>
+          <li><strong>Stores MVP має дзеркалити rides-комплаенс:</strong> checkout = estimate (вага / правила можливих замін розкриті) → показати item-level фінальний кошик → consent де потрібно для дорожчих замін → тоді release &amp; charge. Це логіка тієї ж компанії, що й rides — не копія непрозорого mark-up Glovo після замовлення.</li>
+        </ul>
+      </div>
       <div class="decision" style="margin-top:14px">
         <strong data-lang="en">Implication for this Ukraine MVP</strong><strong data-lang="uk">Що це означає для Ukraine MVP</strong>
-        <p data-lang="en">Do <strong>not</strong> ship a silent second charge like Glovo. Ship hold → disclose final basket (item-level) → consent where needed → release → charge. That is the design Legal can risk-assess for Ukraine as a non-EU pilot, with commercial numbers already in this case and a fast rollback path.</p>
-        <p data-lang="uk">Не запускати silent second charge як у Glovo. Запускати hold → показати фінальний кошик (item-level) → consent де потрібно → release → charge. Саме такий design Legal може оцінити для України як non-EU пілота, з цифрами з цього кейсу і швидким rollback.</p>
+        <p data-lang="en">Do <strong>not</strong> ship a silent second charge like Glovo. Ship the <strong>rides-style</strong> model: hold → disclose final basket (item-level) → consent where needed → release → charge. That closes the internal double standard, matches an already-live Bolt payment pattern, and is the design Legal can risk-assess for Ukraine as a non-EU pilot.</p>
+        <p data-lang="uk">Не запускати silent second charge як у Glovo. Запустити <strong>rides-style</strong> модель: hold → показати фінальний кошик (item-level) → consent де потрібно → release → charge. Це знімає внутрішній подвійний стандарт, повторює вже живий payment-патерн Bolt і є design, який Legal може оцінити для України як non-EU пілота.</p>
       </div>
     </section>
 
@@ -454,7 +470,7 @@
         <li>Forecast uses the optimistic Oct 2026–Mar 2027 scenario. Actual UAH payouts and partner tables are converted at 50.89 UAH/EUR from the forecast assumptions.</li>
         <li>Commission is treated as accruing on partner act GMV (Y). Gap = act GMV − checkout charge. Net ≈ commission(Y) − gap. “24.2%” = forecast gap ÷ forecast commission, not full CP L1.</li>
         <li>Second payment will not recover 100% in every case: failed charges, payment-method constraints and customer protection rules require a fallback design.</li>
-        <li>Legal conclusions (LSS-64024, Liisa, Mar 2026): Glovo-style silent upcharge is non-compliant / high-risk under EU consumer law and strongly not recommended in EU or non-EU; Ukraine may proceed only with clear checkout disclosure, consent where needed, commercial + Legal sign-off, and a separate payment-services review still open.</li>
+        <li>Legal conclusions (LSS-64024, Liisa, Mar 2026): Glovo-style silent upcharge is non-compliant / high-risk under EU consumer law and strongly not recommended in EU or non-EU; Ukraine may proceed only with clear checkout disclosure, consent where needed, commercial + Legal sign-off, and a separate payment-services review still open. Bolt ride-hailing already final-charges after the trip on an estimate — the Stores MVP should mirror that disclosed estimate → final charge pattern, not Glovo’s opaque upcharge.</li>
       </ul>
       <ul data-lang="uk">
         <li>Фактична виплата — позитивна різниця partner GMV мінус Bolt GMV у refund workbook. Вона об’єднує заміни, вагу, пакування та інші зміни, не відображені в системі; файл не розділяє ці драйвери.</li>
@@ -462,7 +478,7 @@
         <li>Прогноз використовує optimistic scenario Oct 2026–Mar 2027. Фактичні UAH-виплати та partner-таблиці конвертовано за 50.89 UAH/EUR з assumptions forecast.</li>
         <li>Комісія вважається нарахованою від GMV актів партнера (Y). Gap = GMV акта − checkout. Нетто ≈ комісія(Y) − gap. “24.2%” = прогнозний gap ÷ прогнозна комісія, не повний CP L1.</li>
         <li>Друга транзакція не поверне 100% у кожному кейсі: failed charges, обмеження payment methods і customer protection rules потребують fallback design.</li>
-        <li>Висновки Legal (LSS-64024, Liisa, бер. 2026): silent upcharge як у Glovo — non-compliant / high-risk за EU consumer law і категорично не рекомендований у EU та non-EU; Україна можлива лише з чітким disclosure на checkout, consent де потрібно, commercial + Legal sign-off; окремий payment-services review ще відкритий.</li>
+        <li>Висновки Legal (LSS-64024, Liisa, бер. 2026): silent upcharge як у Glovo — non-compliant / high-risk за EU consumer law і категорично не рекомендований у EU та non-EU; Україна можлива лише з чітким disclosure на checkout, consent де потрібно, commercial + Legal sign-off; окремий payment-services review ще відкритий. У Bolt ride-hailing уже є фінальне списання після поїздки від estimate — Stores MVP має дзеркалити цей disclosed estimate → final charge, а не opaque upcharge Glovo.</li>
       </ul>
     </section>
 
