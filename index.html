@@ -105,9 +105,9 @@
         <p>Поточний flow фіксує списання до збірки. Усе непокрите збільшення кошика сплачує Bolt, а жорсткі price caps прибирають нормальні заміни й погіршують UX. За оптимістичним планом Stores ця системна втрата зростає до орієнтовних <strong>€185.8k / ₴9.45m за шість місяців</strong>.</p>
       </div>
       <div class="grid kpis">
-        <div class="kpi"><div class="k-label" data-lang="en">Observed gross payout</div><div class="k-label" data-lang="uk">Фактичні валові виплати</div><div class="k-value">₴987k</div><div class="k-note">Jan–Jun 2026</div></div>
+        <div class="kpi"><div class="k-label" data-lang="en">Observed gross payout</div><div class="k-label" data-lang="uk">Фактичні валові виплати</div><div class="k-value">€19.4k</div><div class="k-note">Jan–Jun 2026 · FX 50.89</div></div>
         <div class="kpi"><div class="k-label" data-lang="en">Forecast payout</div><div class="k-label" data-lang="uk">Прогноз виплат</div><div class="k-value">€185.8k</div><div class="k-note">Oct 2026–Mar 2027</div></div>
-        <div class="kpi"><div class="k-label" data-lang="en">Commission consumed</div><div class="k-label" data-lang="uk">Комісії з’їдається</div><div class="k-value">24.2%</div><div class="k-note" data-lang="en">before all other costs</div><div class="k-note" data-lang="uk">до всіх інших витрат</div></div>
+        <div class="kpi"><div class="k-label" data-lang="en">Commission consumed</div><div class="k-label" data-lang="uk">Комісії з’їдається</div><div class="k-value">24.2%</div><div class="k-note" data-lang="en">payout ÷ commission</div><div class="k-note" data-lang="uk">виплати ÷ комісія</div></div>
         <div class="kpi"><div class="k-label" data-lang="en">Peak monthly payout</div><div class="k-label" data-lang="uk">Пікова місячна виплата</div><div class="k-value">€41.2k</div><div class="k-note">Mar 2027</div></div>
       </div>
     </section>
@@ -119,6 +119,8 @@
         <h2 data-lang="uk">Пріоритезувати MVP для України: hold → release → final charge</h2>
         <p data-lang="en">Authorize an estimated amount at checkout, receive the final basket after picking, release the original hold and charge the actual total with clear eater consent and item-level visibility.</p>
         <p data-lang="uk">Авторизувати орієнтовну суму під час checkout, отримати фінальний кошик після picking, зняти початковий hold і списати фактичну суму зі зрозумілою згодою eater та item-level visibility.</p>
+        <p style="margin-top:10px" data-lang="en"><strong>MVP</strong> = Minimum Viable Product: the smallest shippable version that proves hold → release → final charge on one partner (VARUS), before scaling to ATB / Fora.</p>
+        <p style="margin-top:10px" data-lang="uk"><strong>MVP</strong> = Minimum Viable Product (мінімально життєздатний продукт): найменша версія, яка доводить hold → release → final charge на одному партнері (VARUS), перш ніж масштабувати на ATB / Fora.</p>
       </div>
       <div class="ask-side">
         <span class="tag">LSS-64024</span>
@@ -142,13 +144,13 @@
         <p data-lang="uk">Валова виплата — лише позитивна різниця partner-vs-Bolt. Негативні коригування LOKO не зменшують cash, фактично виплачений іншим партнерам.</p>
       </div>
       <div class="grid two">
-        <div class="card"><h3 data-lang="en">Gross Bolt payout by month</h3><h3 data-lang="uk">Валові виплати Bolt за місяць</h3><div class="chart"><canvas id="actualChart"></canvas></div><div class="caption" data-lang="en">X-axis: month · Y-axis: UAH thousands. Source: Demand&amp;Supply Refunds.xlsx, Jan–Jun 2026.</div><div class="caption" data-lang="uk">Вісь X: місяць · вісь Y: тис. UAH. Джерело: Demand&amp;Supply Refunds.xlsx, Jan–Jun 2026.</div></div>
+        <div class="card"><h3 data-lang="en">Gross Bolt payout by month</h3><h3 data-lang="uk">Валові виплати Bolt за місяць</h3><div class="chart"><canvas id="actualChart"></canvas></div><div class="caption" data-lang="en">X-axis: month · Y-axis: EUR thousands. Converted at 50.89 UAH/EUR. Source: Demand&amp;Supply Refunds.xlsx, Jan–Jun 2026.</div><div class="caption" data-lang="uk">Вісь X: місяць · вісь Y: тис. EUR. Конверсія 50.89 UAH/EUR. Джерело: Demand&amp;Supply Refunds.xlsx, Jan–Jun 2026.</div></div>
         <div class="card"><h3 data-lang="en">Payout as % of total Ukraine Stores GMV</h3><h3 data-lang="uk">Виплати як % загального Ukraine Stores GMV</h3><div class="chart"><canvas id="rateChart"></canvas></div><div class="caption" data-lang="en">X-axis: month · Y-axis: % GMV. Six-month weighted country benchmark: 1.08%.</div><div class="caption" data-lang="uk">Вісь X: місяць · вісь Y: % GMV. Зважений country benchmark за шість місяців: 1.08%.</div></div>
       </div>
       <div class="decision risk">
-        <strong data-lang="en">₴987,467 gross payout in six months</strong><strong data-lang="uk">₴987,467 валових виплат за шість місяців</strong>
-        <p data-lang="en">Net deviation is ₴906,119, but netting understates the product problem: positive settlement gaps are direct Bolt-funded costs, while negative adjustments are separate reconciliation outcomes.</p>
-        <p data-lang="uk">Net deviation становить ₴906,119, але netting занижує product problem: позитивні settlement gaps — це прямі витрати Bolt, а негативні коригування — окремий результат reconciliation.</p>
+        <strong data-lang="en">€19.4k gross payout in six months (₴987k)</strong><strong data-lang="uk">€19.4k валових виплат за шість місяців (₴987k)</strong>
+        <p data-lang="en">Positive settlement gaps are paid by Bolt Food Ukraine from commission. Local ops already spends <strong>more than 5 hours every month</strong> just to reconcile partner-vs-Bolt differences across acts and invoices.</p>
+        <p data-lang="uk">Позитивні settlement gaps сплачує Bolt Food Ukraine з комісії. Локальна команда вже витрачає <strong>понад 5 годин щомісяця</strong>, лише щоб звірити різниці partner-vs-Bolt по актах і інвойсах.</p>
       </div>
     </section>
 
@@ -156,14 +158,14 @@
       <div class="section-head"><div><div class="eyebrow">02 · Partner view</div><h2 data-lang="en">The loss is concentrated in strategic partners</h2><h2 data-lang="uk">Втрати концентруються у стратегічних партнерів</h2></div></div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th data-lang="en">Partner</th><th data-lang="uk">Партнер</th><th data-lang="en">Observed months</th><th data-lang="uk">Місяців</th><th data-lang="en">Bolt GMV, UAH</th><th data-lang="uk">Bolt GMV, UAH</th><th data-lang="en">Gross payout, UAH</th><th data-lang="uk">Валові виплати, UAH</th><th data-lang="en">Payout rate</th><th data-lang="uk">Payout rate</th></tr></thead>
+          <thead><tr><th data-lang="en">Partner</th><th data-lang="uk">Партнер</th><th data-lang="en">Observed months</th><th data-lang="uk">Місяців</th><th data-lang="en">Bolt GMV, EUR</th><th data-lang="uk">Bolt GMV, EUR</th><th data-lang="en">Gross payout, EUR</th><th data-lang="uk">Валові виплати, EUR</th><th data-lang="en">Payout rate</th><th data-lang="uk">Payout rate</th></tr></thead>
           <tbody>
-            <tr><td>Kopiyka</td><td>6</td><td>6,704,484</td><td class="bad">361,342</td><td class="bad">5.39%</td></tr>
-            <tr><td>VARUS</td><td>2</td><td>7,150,868</td><td class="bad">278,970</td><td class="bad">3.90%</td></tr>
-            <tr><td>Hop Hey</td><td>6</td><td>7,160,216</td><td>175,437</td><td>2.45%</td></tr>
-            <tr><td>Rukavychka</td><td>6</td><td>3,344,665</td><td>75,909</td><td>2.27%</td></tr>
-            <tr><td>Taistra</td><td>6</td><td>2,902,150</td><td>49,308</td><td>1.70%</td></tr>
-            <tr><td>LOKO</td><td>3</td><td>10,007,364</td><td>46,501</td><td>0.46%</td></tr>
+            <tr><td>Kopiyka</td><td>6</td><td>131,745</td><td class="bad">7,100</td><td class="bad">5.39%</td></tr>
+            <tr><td>VARUS</td><td>2</td><td>140,516</td><td class="bad">5,482</td><td class="bad">3.90%</td></tr>
+            <tr><td>Hop Hey</td><td>6</td><td>140,700</td><td>3,447</td><td>2.45%</td></tr>
+            <tr><td>Rukavychka</td><td>6</td><td>65,723</td><td>1,492</td><td>2.27%</td></tr>
+            <tr><td>Taistra</td><td>6</td><td>57,028</td><td>969</td><td>1.70%</td></tr>
+            <tr><td>LOKO</td><td>3</td><td>196,647</td><td>914</td><td>0.46%</td></tr>
           </tbody>
         </table>
       </div>
@@ -190,6 +192,68 @@
             <tr><td><strong>Total</strong></td><td><strong>8,260,540</strong></td><td><strong>767,858</strong></td><td class="bad"><strong>185,776</strong></td><td><strong>2.25%</strong></td><td class="bad"><strong>24.2%</strong></td></tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">03b · Logic</div><h2 data-lang="en">Why 24.2% of commission is “eaten”</h2><h2 data-lang="uk">Чому “з’їдається” 24.2% комісії</h2></div></div>
+      <div class="card">
+        <ul data-lang="en">
+          <li><strong>Formula:</strong> Commission consumed = projected Bolt-funded payout ÷ Stores commission revenue.</li>
+          <li><strong>Example for the forecast window:</strong> €185.8k payout / €767.9k commission = <strong>24.2%</strong>.</li>
+          <li>This is not “all of Ukraine Food”. It is the share of <em>Stores commission</em> that disappears before courier, payment fees, incentives, CS and other operating costs.</li>
+          <li>So if commission is €100, €24 already leaves as settlement cash-out and only €76 remains to cover the rest of the P&amp;L stack.</li>
+          <li>On Jan–Jun 2026 actuals the same logic was smaller in % (€19.4k / €240.5k commission ≈ 8.1%), but absolute cash-out and mix risk rise sharply as ATB / Fora / grocery scale.</li>
+        </ul>
+        <ul data-lang="uk">
+          <li><strong>Формула:</strong> Комісії з’їдається = прогнозні Bolt-funded виплати ÷ комісійний дохід Stores.</li>
+          <li><strong>Приклад на прогнозному вікні:</strong> €185.8k виплат / €767.9k комісії = <strong>24.2%</strong>.</li>
+          <li>Це не “весь Food України”. Це частка саме <em>комісії Stores</em>, яка зникає ще до courier, payment fees, incentives, CS та інших operating costs.</li>
+          <li>Тобто з €100 комісії €24 уже йде як settlement cash-out, і лише €76 лишається на решту P&amp;L-стеку.</li>
+          <li>На фактах Jan–Jun 2026 ця частка була меншою (€19.4k / €240.5k комісії ≈ 8.1%), але абсолютний cash-out і mix-ризик різко ростуть із масштабом ATB / Fora / grocery.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">03c · P&amp;L</div><h2 data-lang="en">Impact on Bolt Food Ukraine P&amp;L</h2><h2 data-lang="uk">Вплив на P&amp;L Bolt Food Ukraine</h2></div></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th data-lang="en">P&amp;L line</th><th data-lang="uk">Стаття P&amp;L</th><th data-lang="en">Jan–Jun 2026 actual</th><th data-lang="uk">Факт Jan–Jun 2026</th><th data-lang="en">Oct 2026–Mar 2027 forecast</th><th data-lang="uk">Прогноз Oct 2026–Mar 2027</th><th data-lang="en">What happens without a fix</th><th data-lang="uk">Що буде без фіксу</th></tr></thead>
+          <tbody>
+            <tr><td data-lang="en">Stores GMV</td><td data-lang="uk">Stores GMV</td><td>€1.79m</td><td>€8.26m</td><td data-lang="en">Grows with ATB / Fora</td><td data-lang="uk">Росте з ATB / Fora</td></tr>
+            <tr><td data-lang="en">Commission revenue</td><td data-lang="uk">Комісійний дохід</td><td>€240.5k</td><td>€767.9k</td><td data-lang="en">Take-rate falls toward ~9.2%</td><td data-lang="uk">Take-rate падає до ~9.2%</td></tr>
+            <tr><td data-lang="en">Bolt-funded settlement payout</td><td data-lang="uk">Bolt-funded settlement виплати</td><td class="bad">−€19.4k</td><td class="bad">−€185.8k</td><td class="bad" data-lang="en">Direct CM drag</td><td class="bad" data-lang="uk">Прямий удар по CM</td></tr>
+            <tr><td data-lang="en">Commission after settlement leakage</td><td data-lang="uk">Комісія після leakage</td><td>€221.1k</td><td>€582.1k</td><td data-lang="en">24.2% already gone</td><td data-lang="uk">24.2% уже втрачено</td></tr>
+            <tr><td data-lang="en">Still unpaid from that remainder</td><td data-lang="uk">З решти ще треба покрити</td><td data-lang="en">Courier, fees, incentives, CS</td><td data-lang="uk">Courier, fees, incentives, CS</td><td data-lang="en">Same stack, larger scale</td><td data-lang="uk">Той самий стек, більший масштаб</td></tr>
+            <tr><td data-lang="en">Ops reconciliation time</td><td data-lang="uk">Час ops на звірку</td><td>>5 h / month</td><td>>5 h / month</td><td data-lang="en">Grows with partners &amp; docs</td><td data-lang="uk">Росте з партнерами і docs</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="decision risk">
+        <strong data-lang="en">Profitability worsens even if GMV grows</strong><strong data-lang="uk">Прибутковість погіршується навіть при рості GMV</strong>
+        <p data-lang="en">Enterprise grocery launches increase GMV but compress commission %. Settlement leakage stays a cash cost paid by Bolt. Without second payment, contribution margin per euro of GMV deteriorates as the mix shifts to ATB / Fora / VARUS-style grocery.</p>
+        <p data-lang="uk">Запуски enterprise grocery збільшують GMV, але стискають commission %. Settlement leakage лишається cash-витратою Bolt. Без другої транзакції contribution margin на євро GMV погіршується, коли mix зміщується до ATB / Fora / VARUS-grocery.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">03d · Customer impact</div><h2 data-lang="en">Missing / wrong-item complaints · VARUS &amp; Kopiyka</h2><h2 data-lang="uk">Скарги missing / wrong item · VARUS і Копійка</h2></div></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th data-lang="en">Partner</th><th data-lang="uk">Партнер</th><th data-lang="en">Delivered orders</th><th data-lang="uk">Доставлені замовлення</th><th data-lang="en">Missing-item refunds</th><th data-lang="uk">Missing item</th><th data-lang="en">Wrong-item refunds</th><th data-lang="uk">Wrong item</th><th data-lang="en">Complaint rate</th><th data-lang="uk">Частка скарг</th></tr></thead>
+          <tbody>
+            <tr><td>VARUS</td><td>24,262</td><td>131</td><td>51</td><td class="bad">0.75%</td></tr>
+            <tr><td>Kopiyka</td><td>12,541</td><td>82</td><td>28</td><td class="bad">0.88%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="caption" data-lang="en">Source: Databricks · delivery_order_user_refund_reason joined to fact_order_delivery · Jan–Jul 2026 · Ukraine. Reasons: missing_item_eater / wrong_item_eater. These are the visible customer-side symptoms of weak substitution / availability handling under a fixed checkout amount.</div>
+      <div class="caption" data-lang="uk">Джерело: Databricks · delivery_order_user_refund_reason + fact_order_delivery · Jan–Jul 2026 · Ukraine. Причини: missing_item_eater / wrong_item_eater. Це видимі клієнтські симптоми слабких замін / availability при фіксованій сумі на checkout.</div>
+      <div class="decision warn">
+        <strong data-lang="en">Strict per-item caps remove replacements → more missing items → more tickets</strong><strong data-lang="uk">Жорсткі per-item caps прибирають заміни → більше missing items → більше тікетів</strong>
+        <p data-lang="en">When pickers cannot offer a slightly pricier but suitable substitute, the item is removed. The eater complains about a missing / wrong product, CS opens a ticket, and Bolt still funds settlement gaps on weight / packaging / allowed replacements. Second payment unlocks better replacements without Bolt paying the delta.</p>
+        <p data-lang="uk">Коли picker не може запропонувати трохи дорожчу, але релевантну заміну, товар прибирають. Eater скаржиться на missing / wrong product, CS відкриває тікет, а Bolt далі фінансує settlement gaps на вазі / пакуванні / дозволених замінах. Друга транзакція дозволяє нормальні заміни без оплати дельти з кишені Bolt.</p>
       </div>
     </section>
 
@@ -270,14 +334,14 @@
       <ul data-lang="en">
         <li>Actual payout is the positive partner GMV minus Bolt GMV difference in the refund workbook. It combines substitutions, weight, packaging and other changes not reflected in the system; the file does not split these drivers.</li>
         <li>The base forecast applies each existing partner’s historical gross payout rate. ATB and Fora use the pooled grocery benchmark of 2.70%. All other forecast partners use the country benchmark of 1.08%.</li>
-        <li>Forecast uses the optimistic Oct 2026–Mar 2027 scenario. FX is 50.89 UAH/EUR from the forecast assumptions.</li>
+        <li>Forecast uses the optimistic Oct 2026–Mar 2027 scenario. Actual UAH payouts and partner tables are converted at 50.89 UAH/EUR from the forecast assumptions.</li>
         <li>“Commission consumed” is payout / commission revenue, not full contribution margin. Shopper, support, incentives, payment fees and other costs are excluded.</li>
         <li>Second payment will not recover 100% in every case: failed charges, payment-method constraints and customer protection rules require a fallback design.</li>
       </ul>
       <ul data-lang="uk">
         <li>Фактична виплата — позитивна різниця partner GMV мінус Bolt GMV у refund workbook. Вона об’єднує заміни, вагу, пакування та інші зміни, не відображені в системі; файл не розділяє ці драйвери.</li>
         <li>Base forecast застосовує історичний gross payout rate для чинних партнерів. Для ATB і Fora використано pooled grocery benchmark 2.70%. Для решти партнерів — country benchmark 1.08%.</li>
-        <li>Прогноз використовує optimistic scenario Oct 2026–Mar 2027. FX 50.89 UAH/EUR взято з assumptions forecast.</li>
+        <li>Прогноз використовує optimistic scenario Oct 2026–Mar 2027. Фактичні UAH-виплати та partner-таблиці конвертовано за 50.89 UAH/EUR з assumptions forecast.</li>
         <li>“Commission consumed” = payout / commission revenue, а не повна contribution margin. Shopper, support, incentives, payment fees та інші витрати не включено.</li>
         <li>Друга транзакція не поверне 100% у кожному кейсі: failed charges, обмеження payment methods і customer protection rules потребують fallback design.</li>
       </ul>
@@ -286,7 +350,7 @@
     <footer>
       <div class="source">
         <strong data-lang="en">Sources</strong><strong data-lang="uk">Джерела</strong><br>
-        Demand&amp;Supply Refunds.xlsx · FC Stores Forecast Oct26–Mar27.xlsx · Replacements.docx ·
+        Demand&amp;Supply Refunds.xlsx · FC Stores Forecast Oct26–Mar27.xlsx · Replacements.docx · Databricks refund reasons ·
         <a href="https://taxify.atlassian.net/servicedesk/customer/portal/47/LSS-64024?isEligibleForUserSurvey=true">Jira LSS-64024</a>
       </div>
       <div class="source" style="text-align:right">Prepared by Yuliia Nikolaieva<br>21 Aug 2026 · Internal business case</div>
@@ -300,7 +364,7 @@
     Chart.defaults.font.family = 'Inter, system-ui, sans-serif';
     Chart.defaults.color = muted;
     const common = {responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{displayColors:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,grid:{color:grid}}}};
-    new Chart(document.getElementById('actualChart'),{type:'bar',data:{labels:monthsActual,datasets:[{data:[91.8,102.5,104.8,162.8,303.9,221.7],backgroundColor:red,borderRadius:5}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>'₴'+c.raw.toFixed(1)+'k'}}},scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'Gross payout (UAH k)'}}}}});
+    new Chart(document.getElementById('actualChart'),{type:'bar',data:{labels:monthsActual,datasets:[{data:[1.8,2.0,2.1,3.2,6.0,4.4],backgroundColor:red,borderRadius:5}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>'€'+c.raw.toFixed(1)+'k'}}},scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'Gross payout (EUR k)'}}}}});
     new Chart(document.getElementById('rateChart'),{type:'line',data:{labels:monthsActual,datasets:[{data:[1.01,.98,.80,1.04,1.48,.98],borderColor:amber,backgroundColor:'rgba(148,101,26,.12)',fill:true,tension:.25,pointRadius:4}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>c.raw.toFixed(2)+'%'}}},scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'Gross payout / GMV (%)'},ticks:{callback:v=>v+'%'}}}}});
     new Chart(document.getElementById('forecastChart'),{type:'bar',data:{labels:monthsForecast,datasets:[{data:[20.4,28.3,31.2,30.9,33.7,41.2],backgroundColor:red,borderRadius:5}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>'€'+c.raw.toFixed(1)+'k'}}},scales:{...common.scales,y:{...common.scales.y,title:{display:true,text:'Projected payout (EUR k)'}}}}});
     new Chart(document.getElementById('marginChart'),{type:'line',data:{labels:monthsForecast,datasets:[{data:[23.5,24.6,24.6,24.5,24.2,23.8],borderColor:green,backgroundColor:'rgba(47,125,91,.12)',fill:true,tension:.25,pointRadius:4}]},options:{...common,plugins:{...common.plugins,tooltip:{callbacks:{label:c=>c.raw.toFixed(1)+'%'}}},scales:{...common.scales,y:{...common.scales.y,min:0,max:30,title:{display:true,text:'Commission consumed (%)'},ticks:{callback:v=>v+'%'}}}}});
