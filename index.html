@@ -200,27 +200,63 @@
     <section class="section">
       <div class="section-head"><div><div class="eyebrow">03b · Logic</div><h2 data-lang="en">How the gap works if commission is on partner acts</h2><h2 data-lang="uk">Як працює gap, якщо комісія з актів партнера</h2></div></div>
       <div class="card">
-        <p data-lang="en" style="margin-bottom:10px;color:var(--ink)"><strong>Correct settlement math (your point):</strong> commission is accrued on the partner act amount (Y), not on the lower amount the eater was charged at checkout (X).</p>
-        <p data-lang="uk" style="margin-bottom:10px;color:var(--ink)"><strong>Правильна математика settlement (ваш поінт):</strong> комісія нараховується від суми актів партнера (Y), а не від нижчої суми, яку eater сплатив на checkout (X).</p>
+        <p data-lang="en" style="margin-bottom:10px;color:var(--ink)"><strong>Yes — commission on partner acts (Y) is better than commission on Bolt checkout (X).</strong> The gap is <em>not</em> “wrong commission base”. The gap is a <strong>cash mismatch</strong>: partner is settled on what was shipped (Y), but the eater was only charged the pre-pick amount (X).</p>
+        <p data-lang="uk" style="margin-bottom:10px;color:var(--ink)"><strong>Так — комісія з актів партнера (Y) краща, ніж якби брали з checkout Bolt (X).</strong> Gap — це <em>не</em> «неправильна база комісії». Gap — це <strong>розрив у грошах</strong>: з партнером рахуємось за тим, що відвантажили (Y), а з eater списали лише pre-pick суму (X).</p>
         <ul data-lang="en">
-          <li><strong>X</strong> = amount charged to the eater (Bolt checkout / hold).</li>
-          <li><strong>Y</strong> = partner act GMV after picking (replacements, weight, packaging).</li>
-          <li><strong>Commission</strong> ≈ rate × <strong>Y</strong> (from partner acts).</li>
-          <li><strong>Gap</strong> = Y − X = cash Bolt still funds because the customer was not recharged.</li>
-          <li><strong>Net kept from this layer</strong> ≈ Commission(Y) − Gap(Y−X).</li>
-          <li><strong>Example:</strong> X = €100, Y = €105, commission 10% → commission = €10.50, gap = €5, net ≈ €5.50. Without the gap, Bolt would keep the full €10.50 before other costs.</li>
-          <li><strong>What 24.2% means:</strong> forecast Gap €185.8k ÷ forecast Commission €767.9k. It is <em>not</em> “24% of all Food Ukraine”. It means the gap offsets about one quarter of Stores commission euros in the optimistic window.</li>
-          <li>On Jan–Jun 2026 actuals the same ratio was ≈ €19.4k / €240.5k = <strong>8.1%</strong>. It rises in the forecast because grocery mix (VARUS / ATB / Fora) grows while commission % falls.</li>
+          <li><strong>X</strong> = amount charged to the eater (Bolt checkout / hold) — original order before picking.</li>
+          <li><strong>Y</strong> = partner act GMV after picking (replacements, weight, packaging) — matches what was actually shipped.</li>
+          <li><strong>Commission</strong> ≈ rate × <strong>Y</strong> — so yes, Bolt earns commission on the full shipped basket, which is better than rate × X.</li>
+          <li><strong>What Bolt pays the partner</strong> ≈ Y − Commission(Y). <strong>What Bolt received from the eater for goods</strong> ≈ X.</li>
+          <li><strong>Gap</strong> = Y − X = the missing customer cash. Bolt still has to cover settlement as if the basket were Y, without having collected that delta from the eater.</li>
+          <li><strong>Net from this layer</strong> ≈ Commission(Y) − Gap = rate×Y − (Y−X).</li>
         </ul>
         <ul data-lang="uk">
-          <li><strong>X</strong> = сума, списана з eater (Bolt checkout / hold).</li>
-          <li><strong>Y</strong> = GMV за актами партнера після збірки (заміни, вага, пакування).</li>
-          <li><strong>Комісія</strong> ≈ ставка × <strong>Y</strong> (з актів партнера).</li>
-          <li><strong>Gap</strong> = Y − X = cash, який досі фінансує Bolt, бо клієнта повторно не списали.</li>
-          <li><strong>Нетто з цього шару</strong> ≈ Комісія(Y) − Gap(Y−X).</li>
-          <li><strong>Приклад:</strong> X = €100, Y = €105, комісія 10% → комісія = €10.50, gap = €5, нетто ≈ €5.50. Без gap Bolt залишив би повні €10.50 до інших витрат.</li>
-          <li><strong>Що означає 24.2%:</strong> прогнозний Gap €185.8k ÷ прогнозна Комісія €767.9k. Це <em>не</em> “24% усього Food України”. Це означає, що gap з’їдає близько чверті євро комісії Stores в optimistic вікні.</li>
-          <li>На факті Jan–Jun 2026 той самий ratio ≈ €19.4k / €240.5k = <strong>8.1%</strong>. У прогнозі він росте, бо grocery mix (VARUS / ATB / Fora) збільшується, а commission % падає.</li>
+          <li><strong>X</strong> = сума, списана з eater (Bolt checkout / hold) — початкове замовлення до збірки.</li>
+          <li><strong>Y</strong> = GMV за актами партнера після збірки (заміни, вага, пакування) — збігається з тим, що реально відвантажили.</li>
+          <li><strong>Комісія</strong> ≈ ставка × <strong>Y</strong> — так, Bolt бере комісію з повного відвантаженого кошика; це краще, ніж ставка × X.</li>
+          <li><strong>Що Bolt платить партнеру</strong> ≈ Y − Комісія(Y). <strong>Що Bolt отримав від eater за товари</strong> ≈ X.</li>
+          <li><strong>Gap</strong> = Y − X = відсутні гроші клієнта. Bolt усе одно закриває settlement як за кошик Y, не зібравши цю дельту з eater.</li>
+          <li><strong>Нетто з цього шару</strong> ≈ Комісія(Y) − Gap = ставка×Y − (Y−X).</li>
+        </ul>
+        <div class="table-wrap" style="margin-top:12px">
+          <table>
+            <thead>
+              <tr>
+                <th data-lang="en">Scenario</th><th data-lang="uk">Сценарій</th>
+                <th data-lang="en">Eater pays</th><th data-lang="uk">Eater платить</th>
+                <th data-lang="en">Partner act</th><th data-lang="uk">Акт партнера</th>
+                <th data-lang="en">Commission base</th><th data-lang="uk">База комісії</th>
+                <th data-lang="en">Net ≈</th><th data-lang="uk">Нетто ≈</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-lang="en">A · Commission on checkout only (worse)</td><td data-lang="uk">A · Комісія лише з checkout (гірше)</td>
+                <td>100</td><td>105</td><td>X = 100</td>
+                <td data-lang="en">10 − 5 = <span class="bad">5</span></td><td data-lang="uk">10 − 5 = <span class="bad">5</span></td>
+              </tr>
+              <tr>
+                <td data-lang="en">B · Today: commission on acts, eater not recharged</td><td data-lang="uk">B · Сьогодні: комісія з актів, eater не досписаний</td>
+                <td>100</td><td>105</td><td>Y = 105</td>
+                <td data-lang="en">10.50 − 5 = <span class="bad">5.50</span></td><td data-lang="uk">10.50 − 5 = <span class="bad">5.50</span></td>
+              </tr>
+              <tr>
+                <td data-lang="en">C · Second payment: eater pays final basket</td><td data-lang="uk">C · Друга транзакція: eater платить фінальний кошик</td>
+                <td>105</td><td>105</td><td>Y = 105</td>
+                <td class="good" data-lang="en">10.50 − 0 = <strong>10.50</strong></td><td class="good" data-lang="uk">10.50 − 0 = <strong>10.50</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p data-lang="en" style="margin-top:10px;color:var(--ink)">Example assumes 10% commission, X = €100, Y = €105. <strong>B is better than A</strong> (+€0.50 of commission on the delta). <strong>C is much better than B</strong> because the full €5 gap stops being Bolt-funded. Second payment does not “fix” commission on acts — it removes the cash hole next to that commission.</p>
+        <p data-lang="uk" style="margin-top:10px;color:var(--ink)">Приклад: комісія 10%, X = €100, Y = €105. <strong>B краще за A</strong> (+€0.50 комісії на дельті). <strong>C набагато краще за B</strong>, бо повні €5 gap перестають бути на Bolt. Друга транзакція не «виправляє» комісію з актів — вона прибирає грошову дірку поруч із цією комісією.</p>
+        <ul data-lang="en" style="margin-top:10px">
+          <li><strong>What 24.2% means:</strong> forecast Gap €185.8k ÷ forecast Commission €767.9k. Not “24% of all Food Ukraine” — about one quarter of Stores commission euros in the optimistic window is offset by the gap.</li>
+          <li>Jan–Jun 2026 actuals: ≈ €19.4k / €240.5k = <strong>8.1%</strong>. Forecast rises as grocery mix (VARUS / ATB / Fora) grows and commission % falls.</li>
+        </ul>
+        <ul data-lang="uk" style="margin-top:10px">
+          <li><strong>Що означає 24.2%:</strong> прогнозний Gap €185.8k ÷ прогнозна Комісія €767.9k. Не “24% усього Food України” — близько чверті євро комісії Stores в optimistic вікні з’їдає gap.</li>
+          <li>Факт Jan–Jun 2026: ≈ €19.4k / €240.5k = <strong>8.1%</strong>. У прогнозі росте, бо grocery mix (VARUS / ATB / Fora) збільшується, а commission % падає.</li>
         </ul>
       </div>
     </section>
